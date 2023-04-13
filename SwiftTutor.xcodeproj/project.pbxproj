@@ -99,12 +99,12 @@
 		3377DDB529E801EE009D4FE4 /* SwiftTutor */ = {
 			isa = PBXGroup;
 			children = (
-				3377DDB629E801EE009D4FE4 /* AppDelegate.swift */,
-				3377DDB829E801EE009D4FE4 /* SceneDelegate.swift */,
-				3377DDBA29E801EE009D4FE4 /* ViewController.swift */,
-				3377DDBC29E801EE009D4FE4 /* Main.storyboard */,
-				3377DDBF29E801F0009D4FE4 /* Assets.xcassets */,
-				3377DDC129E801F0009D4FE4 /* LaunchScreen.storyboard */,
+				3377DDEB29E80272009D4FE4 /* System */,
+				3377DDEA29E80238009D4FE4 /* Resources */,
+				3377DDE929E80223009D4FE4 /* Helpers */,
+				3377DDE829E80208009D4FE4 /* ViewController */,
+				3377DDE729E80202009D4FE4 /* View */,
+				3377DDE629E801FB009D4FE4 /* Model */,
 				3377DDC429E801F0009D4FE4 /* Info.plist */,
 			);
 			path = SwiftTutor;
@@ -125,6 +125,54 @@
 				3377DDD929E801F0009D4FE4 /* SwiftTutorUITestsLaunchTests.swift */,
 			);
 			path = SwiftTutorUITests;
+			sourceTree = "<group>";
+		};
+		3377DDE629E801FB009D4FE4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3377DDE729E80202009D4FE4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3377DDE829E80208009D4FE4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3377DDBA29E801EE009D4FE4 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		3377DDE929E80223009D4FE4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3377DDEA29E80238009D4FE4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3377DDBF29E801F0009D4FE4 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3377DDEB29E80272009D4FE4 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				3377DDB629E801EE009D4FE4 /* AppDelegate.swift */,
+				3377DDB829E801EE009D4FE4 /* SceneDelegate.swift */,
+				3377DDBC29E801EE009D4FE4 /* Main.storyboard */,
+				3377DDC129E801F0009D4FE4 /* LaunchScreen.storyboard */,
+			);
+			path = System;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
