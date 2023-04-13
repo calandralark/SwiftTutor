@@ -1,0 +1,1508 @@
+[
+  {
+    "title" : "Accessibility",
+    "description" : "Questions that cover making apps easier to use for everyone.",
+    "questions" : [
+    {
+      "prompt" : "What is VoiceOver?",
+      "answer" : "VoiceOver is often referred to as Apple’s screen-reading technology that gives users control over their device without seeing the screen. It is one of the tools used to make an app more accessible."
+    },
+    {
+      "prompt" : "What is Dynamic Type?",
+      "answer" : "Dynamic Type is an accessibility tool and is a way of allowing the user to adjust their preferred size for all fonts in all apps. SwiftUI includes it by default"
+    },
+    {
+      "prompt" : "What are the main problems we need to solve when making accessible apps?",
+      "answer" : "Consider the following: visual impairment, color blindness, touch problems, and audio problems. Describe Dynamic Type  – why is it important?"
+    },
+    {
+      "prompt" : "What can be done to make apps more accessible?",
+      "answer" : "Examples include adding icons alongside colors to accommodate users with color blindness, or adding support for the Reduce Motion option."
+    },
+    
+    {
+      "prompt" : "What do the modifiers accessibilityLabel accessibilityHint do?",
+      "answer" : "Both accessibilityLabel accessibilityHint take text containing anything we want, but they serve different purposes:\n\nThe label is read immediately, and should be a short piece of text that gets right to the point. If this view deletes an item from the user’s data, it might say “Delete”.\n\nThe hint is read after a short delay, and should provide more details on what the view is there for. It might say “Deletes an email from your inbox”, for example."
+    }
+    
+  ]
+  },
+  {
+    "title" : "Data",
+    "description" : "Questions dealing with data and data structures.",
+    "questions" : [
+    {
+      "prompt" : "How is a dictionary different from an array?",
+      "answer" : "The key difference is access data: arrays must be accessed using the index of each element, whereas dictionaries can be accessed using something such as a key – strings are very common. Apple's uses a dictionary to store airport codes and names. An advantage of dictionaries is that they are quicker to access."
+    },
+    {
+      "prompt" : "What are the main differences between classes and structs in Swift?",
+      "answer" : "Discuss value types (like structs) and reference types (like classes), and that classes allow inheritance (can be sub-classed) and have deinit() methods, whereas structs do not. Structs have implicit initializers"
+    },
+    {
+      "prompt" : "What are tuples and why are they useful?",
+      "answer" : "Tuples are like anonymous structs, and are helpful for returning multiple values from a method in a type-safe way, among other things. Structs are useful when, for example, returning two values from an array or function."
+    },
+    {
+      "prompt" : "What does the Codable protocol do?",
+      "answer" : "The Codable protocol (Encodable and Decodable) allows us to safely convert custom Swift types to and from JSON, XML, and similar.  It includes customization points such as key and date decoding strategies, the CodingKey protocol, to handle a range of input and output styles."
+    },
+    {
+      "prompt" : "What is the difference between an array and a set?",
+      "answer" : "Arrays and Sets have several features in common. They both store a collection of values of the same type.\n\nSets are unordered and can’t contain duplicates, so lookup is significantly faster. "
+    },
+    {
+      "prompt" : "What is the difference between the Float, Double, and CGFloat data types?",
+      "answer" : "They differ in how they store data: Float is always 32-bit, Double is always 64-bit, and CGFloat is either 32-bit or 64-bit depending on the device it runs on, but realistically it’s just 64-bit all the time.  From Swift 5.5 and onwards CGFloat and Double can be used interchangeably."
+    },
+    {
+      "prompt" : "What’s the importance of key decoding strategies when using Codable?",
+      "answer" : "Key decoding strategies allow for difference between JSON keys and property names in a Decodable struct. For example, it’s common for JSON keys to use snake_case for key names, whereas the Swift struct may use camelCase. The key decoding strategy converts between the two."
+    },
+    {
+      "prompt" : "When using arrays, what’s the difference between map() and compactMap()?",
+      "answer" : "The map() transforms a sequence using a function we specify, whereas compactMap() does that same step but then unwraps its optionals and discards any nil values. For example, converting an array of strings into integers works better with compactMap(), because creating an Int from a String is failable."
+    },
+    {
+      "prompt" : "Why is immutability important?",
+      "answer" : "Immutability promotes safer programming; the complier guarantees that a value wil not change"
+    },
+    
+    {
+      "prompt" : "What types of \"Range\" are there in Swift?",
+      "answer" : "In Swift, there are three types of range:\n\n Closed range, e.g.: for numbers in 1...4 {\n\n  Half-Open range, e.g.: for numbers in 1..<4 \n\n One-sided range, e.g.: let range1 = ..<2\n\nA closed range includes all the values in the interval from the lower bound to the upper bound. A half-open range includes all the values from the lower bound to the upper bound. A one-sided range contains elements up to infinite in one direction."
+    },
+    
+    {
+      "prompt" : "What are one-sided ranges and when would you use them?",
+      "answer" : "One-sided ranges are ranges where the start or end of the range are unspecified, meaning that Swift will automatically make the range start from the start of the collection or the end of the collection. They are useful when reading from a certain position to the end of a collection, such as skipping the first 10 users in an array.\n\nExamples:\n\n\nA one-sided range contains elements up to infinite in one direction\n\n let range1 = ..<2\n\nThis is a one-sided range containing all elements from 2 to -∞.\n\n  let range2 = 2..."
+    },
+    {
+      "prompt" : "What does it mean when we say “strings are collections in Swift”?",
+      "answer" : "This means that Swift’s String type conform to the Collection protocol, which allows us to loop over characters, count how long the string is, map the characters, select random characters, and more.  The Collection protocol means that there is a consistent way to work with strings, arrays, sets. etc."
+    },
+    {
+      "prompt" : "What is a UUID, and when might you use it?",
+      "answer" : "UUID stands for 'universally unique identifier'; it is a long string of hexadecimal numbers stored in a single type.  UUIDs guarantee that a value is unique, for example a unique filename or object id."
+    },
+    {
+      "prompt" : "What's the difference between a value type and a reference type?",
+      "answer" : "The best way to frame this discussion is likely to be classes vs structs: an instance of a class can have multiple owners, but an instance of a struct cannot. Closures are also reference types, which means that a closure can have multiple owners"
+    },
+    {
+      "prompt" : "When would you use Swift’s Result type?",
+      "answer" : "Result is an enum encapsulating success and failure, both with associated values for extra information. Results are typically used with asynchronous, for example, URLSession pass both a value and an error even when only one should exist at a time.  Other benefits of Result include being able to send the result of a function around as value to be handled at a later date, and also the ability to handle typed errors."
+    },
+    {
+      "prompt" : "What is type erasure and when would you use it?",
+      "answer" : "Type erasure allows us to throw away some type information, for example to say that an array of strings is actually just AnySequence – it’s a sequence containing strings, but we don’t know exactly what kind of sequence.  This is particularly useful when types are long and complex, which is often the case with Combine. So, rather than having a return type that is 500 characters long, we can just say AnyPublisher<SomeType, Never> – it’s a publisher that will provide SomeType and never throw an error, but we don’t care exactly what publisher it is."
+    }
+  ]
+  },
+  {
+    "title" : "Design patterns",
+    "description" : " Questions about design patterns, code architectures, and other programming approaches.",
+    "questions" : [
+    {
+      "prompt" : "What are delegates?",
+      "answer" : "Delegation allows you to have one object act in place of another, for example a view controller might act as the data source for a table. The delegate pattern is used throughout iOS, for example UITableViewDelegate from UIKit."
+    },
+    {
+      "prompt" : "What is MVC?",
+      "answer" : "MVC separates data (model) from presentation (view), with the two parts being managed by separate logic (a controller).\n\nA downside is \"Massive View Controller\". This is when view controllers get bloated as code gets merged together."
+    },
+    {
+      "prompt" : "What is MVVM?",
+      "answer" : "MV-VM stands for Model (your data), View (your layout), and View Model (a way to store the state of your application independently from your UI), but there are nebulous parts, for example, networking code."
+    },
+    {
+      "prompt" : "What is dependency injection?",
+      "answer" : "Dependency injection is the practice of creating an object and tell it what data it should work with, rather than letting that object query its environment to find that data for itself. Although this goes against the OOP principle of encapsulation. It allows for mocking data when testing."
+    },
+    {
+      "prompt" : "What is protocol-oriented programming?",
+      "answer" : "POP differs from OOP in that it promotes horizontal rather than vertical architectures, which reduces the size of class hierarchies. POP is able to work with structs and enums as well as classes, whereas only classes can inherit."
+    },
+    {
+      "prompt" : "What is functional programming?",
+      "answer" : "In functional programming, functions must be first-class types, meaning that they can be passed as other types.  Examples include map(), compactMap(), flatMap(), reduce(), filter(), etc. "
+    },
+    {
+      "prompt" : "What is KVO?",
+      "answer" : "Key-Value Observing.  It allows objects to be notified when the state of another object changes. KVO is used to watch for changes on values that don’t have delegates; it means: \"tell me when this value changes.\" For example, watching the page load progress on a WKWebView. It is used in UIKit rather than SwiftUI"
+    },
+    {
+      "prompt" : "What are singletons and when are they useful?",
+      "answer" : "Singleton is a design pattern that ensures a class can have only one object. Such a class is called singleton class.\n\nSingletons are used to  provide a unified access point to a resource or service that's shared across an app, like an audio channel to play sound effects or a network manager to make HTTP requests.\n\nBroadly speaking singletons should be avoided, but Apple uses singletons extensively, for example, UIApplication are designed to exist only once.\n\nSingletons compare with SwiftUI’s environment objects."
+    },
+    {
+      "prompt" : "What are phantom types and when are they used?",
+      "answer" : "Phantom types are a type that doesn’t use at least one of its generic parameters – they are declared with a generic parameter that isn’t used in their properties or methods.  Even though the generic type parameter is unused by the programmer, Swift does use the parameter, which means it will treat two instances of our type as being incompatible if their generic type parameters are different.\n\nPhantom types aren’t used often, but when they are used they help the compiler enforce extra rules on our behalf – they make bad states impossible because the compiler will refuse to build our code."
+    }
+  ]
+  },
+  {
+    "title" : "Frameworks",
+    "description" : " Questions about Apple frameworks and APIs beyond UIKit and SwiftUI.",
+    "questions" : [
+    {
+      "prompt" : "How does CloudKit differ from Core Data?",
+      "answer" : "Although the two have many conceptual similarities, CloudKit is specifically designed to work remotely. Another key difference is that CloudKit lets you store data without worrying about your structure ahead of time, whereas Core Data requires that you define your structure up front."
+    },
+    {
+      "prompt" : "How does SpriteKit differ from SceneKit?",
+      "answer" : "SpriteKit is for 2D drawing and SceneKit is for 3D, but both use Metal, and can be combined.  They can both be used with ARKit, UIKit, and SwiftUI."
+    },
+    {
+      "prompt" : "What is Core Data and how is it used?",
+      "answer" : "Core data is a relational database. The introduction of NSPersistentContainer made Core Data easier to use from iOS 10 onwards. Core Data providessearching, sorting, and relationships, but struggles with optionality and extensive stringly typed APIs."
+    },
+    {
+      "prompt" : "What are Core Graphics?",
+      "answer" : "Core Graphics is used for drawing basic shapes, but also for text and resizing images. It can be used for drawing inside SwiftUI."
+    },
+    {
+      "prompt" : "What are the different ways of showing web content to users?",
+      "answer" : "These include: UIWebView, WKWebView, SFSafariViewController, and calling openURL() on UIApplication. UIWebView is deprecated."
+    },
+    
+    {
+      "prompt" : "What is a set?",
+      "answer" : "A set is a built-in data type that is like an array, except it can’t contain duplicate values and doesn’t remember the order in which you add objects. A set can be created from arrays and they will automatically remove any duplicates.\n\nAn object must be hashable to add to a set.\n\nThere are some set operators, for example, Union."
+    },
+    
+    {
+      "prompt" : "What is meant by \"opaque return type\"?",
+      "answer" : "This means \"one object that conforms to the View protocol, but we don’t want to say what\". This has performance advantages, and means that the developer doesn't need to know what type of view is returned."
+    },
+    
+    {
+      "prompt" : "What class is used to list files in a directory?",
+      "answer" : "FileManager. Be aware of sandboxing: important directories such as documents and caches, and using App Groups to share data between targets in the app."
+    },
+    {
+      "prompt" : "What is UserDefaults good for? What are they not good for?",
+      "answer" : "Speed, size, and security are inmportant: UserDefaults is bad at large amounts of data for performance,and does not work for complex data types because of NSCoding.\n\nUserDefaults shoild not be used for information such as credit cards and passwords; prefer keychain instead. In SwiftUI @AppStorage can be used instead of UserDefaults."
+    },
+    {
+      "prompt" : "What is the purpose of NotificationCenter?",
+      "answer" : "These are used for receiving system messages, for example to be notified when they keyboard appears or disappears., but can also be used to send messages inside the app. NotificationCenter is an alternative to delegates."
+    },
+    {
+      "prompt" : "What are important considerations when making network request?",
+      "answer" : "Network requests must be asynchronous to avoid blocking the main thread. Work must be pushed back to the main thread when it's time to update the user interface. "
+    },
+    {
+      "prompt" : "When would you use CGAffineTransform?",
+      "answer" : "CGAffineTransforms are used to manipulate the frame of a view, for example,to make a view scale upwards, rotate, or grow larger over time.  The affine scale transforms don't cause views to redraw at their larger size, which means that text is likely to appear fuzzy."
+    },
+    {
+      "prompt" : "What is Core Image?",
+      "answer" : "Core Graphics and Core Image are not the same. Core Image is used less often than Core Graphics, but is helpful for filtering images: blurring or sharpening, adjusting colors, and so on.  Core Image can apply multiple effects efficiently, and how it can also generate some kinds of images too."
+    },
+    {
+      "prompt" : "What are iBeacons?",
+      "answer" : "iBeacons were introduced in iOS 7, and have found mixed use. It is a protocol by which a beacon can broadcast its identity to compatible devices and may be used to determine  the devise's position"
+    },
+    {
+      "prompt" : "What is StoreKit?",
+      "answer" : "StoreKit is used in unlocking in-app purchases, displaying other apps to purchase, or asking users to review the app."
+    },
+    {
+      "prompt" : "What is GCD?",
+      "answer" : "Grand Central Dispatch includes DispatchQueue and OperationQueue. It is a mechanism for multitasking, that is running tasks at different priorities. GCD provides queues (main, global and custom) and provides for Asynchronous and Synchronous execution. \"QoS\" (Quality of Service), include user initiated, utility and background."
+    },
+    {
+      "prompt" : "What class is used to play a custom sound?",
+      "answer" : "AVAudioPlayer is used but the object must be kept alive while its sound plays. AudioServicesCreateSystemSoundID() is an alternative."
+    },
+    {
+      "prompt" : "What is a NSAttributedString?",
+      "answer" : "NSAttributedStrings are useful to add formatting like bold, italics, and color. They are useful for hyperlinks, and can have images embeded inside."
+    },
+    {
+      "prompt" : "What is the purpose of GameplayKit?",
+      "answer" : "GameplayKit contains classes for games, such as AI strategists, state machines, and pathfinding."
+    },
+    {
+      "prompt" : "What is the purpose of ReplayKit?",
+      "answer" : "ReplayKit is used to record, save, and broadcast the user’s activity in the app. It's most commonly used in games, but can be used for submitting error report videos from users."
+    },
+    {
+      "prompt" : "When might you use NSSortDescriptor?",
+      "answer" : "NSSortDescriptor provides sorting instructions to a data store, e.g. 'sort by name alphabetically'.  It's commonly used when used in Core Data to sort the fetched data, but it's also available in CloudKit.  It can be a stringly typed API, or you can use key paths instead."
+    },
+    {
+      "prompt" : "Name three different CALayer subclasses?",
+      "answer" : "CAGradientLayer, CATiledLayer, CAEmitterLayer, CAShapeLayer, are examples."
+    },
+    {
+      "prompt" : "What is the purpose of CADisplayLink?",
+      "answer" : "This attaches code to the user interface drawing loop so that code always gets called immediately after a frame has been drawn."
+    }
+  ]
+  },
+  {
+    "title" : "iOS",
+    "description" : "General questions about building for iOS itself, or UI questions that apply to both UIKit and SwiftUI.",
+    "questions" : [
+    {
+      "prompt" : "How would one add a shadow to a view?",
+      "answer" : "In UIKit, all view layers have options for shadow opacity, radius, offset, color, and path. In SwiftUI, you can use the shadow() modifier."
+    },
+    {
+      "prompt" : "How would you round the corners of one of your views?",
+      "answer" : "Using UIKit, use the cornerRadius property of your view’s layer – something like myView.layer.cornerRadius = 10.\n\nUsing SwiftUI, use the cornerRadius() modifier."
+    },
+    {
+      "prompt" : "What are the advantages and disadvantages of SwiftUI compared to UIKit?",
+      "answer" : "UIKit gives us endless customizability, for example, as well as access to almost the full range of iOS UI tools, but it takes a lot more code to use and all the state changes need to be handled properly.\n\nSwiftUI gives has fewer iOS components, but takes less than a fifth of the amount of code to write."
+    },
+    {
+      "prompt" : "What is a sensible minimum iOS deployment target?",
+      "answer" : "A safe answer is Apple’s: \"the current version minus 1.\" Note that e-commerce companies – i.e., companies that rely on users buying things through their app – are more likely to support a wider range of deployment targets, because even if only 5% of their users are on iOS n-2 that's enough to cause a significant revenue hit if they were lost."
+    },
+    {
+      "prompt" : "What settings are stored in the Info.plist file?",
+      "answer" : "The Info.plist file stores settings that must be available even when the app isn't running. Examples include custom URLs, privacy permission messages, custom fonts, whether the app disables background running, and so on."
+    },
+    {
+      "prompt" : "What is the purpose of size classes?",
+      "answer" : "Size Classes are the iOS method of creating layouts that adapt on all sizes and orientations of iPhone and iPad. A Size Class is either Compact or Regular.\n\nSize classes let you add extra layout configuration to your app so that your UI works well across different devices.\n\nFor example, you might say that a stack view aligns its views horizontally in normal conditions, but vertically when constrained."
+    },
+    {
+      "prompt" : "What happens when Color or UIColor has values outside 0 to 1?",
+      "answer" : "In the old days values outside of 0 and 1 would be clamped (i.e., forced to 0 or 1) because they didn't mean anything, but wide color support means that is no longer the case – a red value beyond 1.0 is especially red, going into the Display P3 gamut."
+    }
+  ]
+  },
+  
+  {
+    "title" : "Concurrency",
+    "description" : "Concurrent code in Swift, including async/await, tasks, actors, and more.",
+    "questions" : [
+      {
+        "prompt" : "What is meant by \"concurrency\"?",
+        "answer" : "It is when a single CPU runs multiple programs at the same time. The CPU is working on a round-robin basis, allocating a time slice to one process, and then to another, and so on."
+      },
+      
+      {
+        "prompt" : "What is meant by \"sendable\"?",
+        "answer" : "\"sendable\" data, which is data that can safely be transferred to another thread. This is accomplished through a new Sendable protocol, and an @Sendable attribute for functions.\n\nSwift uses the @Sendable attribute on functions or closure to mark them as working concurrently, and will enforce various rules to stop us shooting ourself in the foot."
+      },
+      
+      {
+        "prompt" : "What is meant by \"parallelism\"?",
+        "answer" : "This is when there are multiple CPU's and the diffentent programs can be run on different CPU's. additionally, a single program can spread its processing on multiple CPU's."
+      },
+      
+      {
+        "prompt" : "What is meant by the \"main thread\"?",
+        "answer" : "Every program launches with at least one thread where its work takes place, called the main thread. Super simple command-line apps for macOS might only ever have that one thread, iOS apps will have many more to do all sorts of other jobs, but either way that initial thread – the one the app is first launched with – always exists for the lifetime of the app, and it’s always called the main thread."
+      },
+      
+      {
+        "prompt" : "What is the importance of the \"main thread\"?",
+        "answer" : "The main thread is important because all the user interface work must take place on that main thread. Trying to update the UI from any other thread in the program might result in nothing happening, or the app crashes, or pretty much anywhere in between."
+      },
+      
+      {
+        "prompt" : "What is meant by \"context switch\"?",
+        "answer" : "Swapping threads is known as a context switch, and it has a performance cost: the system must stash away all the data the thread was using and remember how far it had progressed in its work, before giving another thread the chance to run. When this happens a lot – when you create many more threads compared to the number of available CPU cores – the cost of context switching grows high, and so it has a suitably disastrous-sounding name: thread explosion."
+      },
+      
+      {
+        "prompt" : "What is a \"queue\"?",
+        "answer" : "Queues work like they do in real life, where you might line up to buy something at a grocery store: you join the queue at the back, then move forward again and again until you’re at the front, at which point you can check out.\n\nSwift’s queues work exactly the same way: we create a queue and add work to it, and the system will remove and execute work from there in the order it was added. Sometimes the queues are serial, which means they remove one piece of work from the front of the queue and complete it before going onto the next piece of work; and sometimes they are concurrent, which means they remove and execute multiple pieces of work at a time. Either way work will start in the order it was added to the queue unless we specifically say something has a high or low priority."
+      },
+      
+      {
+        "prompt" : "What is a \"thread\"?",
+        "answer" : "Threads are the individual slices of a program that do pieces of work, whereas queues are like pipelines of execution where we can request that work be done at some point. Queues are easier to think about than threads because they focus on what matters: we don’t care how some code runs on the CPU, as long as it either runs in a particular order (serially) or not (concurrently). A lot of the time we don’t even create the queue – we just use one of the built-in queues and let the system figure out how it should happen."
+      },
+      
+      {
+        "prompt" : "What is the difference between \"concurrency\" and \"parallelism\"?",
+        "answer" : "Rob Pike wrote: \"Concurrency is about dealing with many things at once, parallelism is about doing many things at once. Concurrency is a way to structure things so you can maybe use parallelism to do a better job.\"."
+      },
+      
+      {
+        "prompt" : "Task and TaskGroup have four priorities. What are they?",
+        "answer" : "Task and TaskGroup can be created with one of four priority levels: high is the most important, then medium, low, and finally background at the bottom. Task priorities allow the system to adjust the order in which it executes work, meaning that important work can happen before unimportant work."
+      },
+      
+      {
+        "prompt" : "What’s the difference between the \"main queue\" and the \"main thread\"?",
+        "answer" : "The main thread is the one that starts our program, and it’s also the one where all our UI work must happen. However, there is also a main queue, and although sometimes we use the terms “main thread” and “main queue” interchangeably, they aren’t quite the same thing.\n\nIt’s a subtle distinction, but it can sometimes matter: although your main queue will always execute on the main thread (and is therefore where you’ll be doing your UI work!), it’s also possible that other queues might sometimes run on the main thread – the system is free to move things around in whatever way is most efficient.\n\nSo, if you’re on the main queue then you’re definitely on the main thread, but being on the main thread doesn’t automatically mean you’re on the main queue – a different queue could temporarily be running on the main thread."
+      },
+      
+      {
+        "prompt" : "What is a synchronous function?",
+        "answer" : "A synchronous function is one that executes all its work in a simple, straight line on a single thread. Although the function itself can interact with other threads – it can request that work happens elsewhere, for example – the function itself always runs on a single thread. By default, all Swift functions are synchronous.\n\nSynchronous functions have an important downside, which is that they are blocking."
+      },
+      
+      {
+        "prompt" : "How do you call async throwing functions?",
+        "answer" : "Just like their synchronous counterparts, Swift’s async functions can be throwing or non-throwing depending on how you want them to behave. However, there is a twist: although we mark the function as being async throws, we call the function using try await – the keyword order is flipped.\n\n So, it’s \"asynchronous, throwing\" in the function definition, but \"throwing, asynchronous\" at the call site. Think of it as unwinding a stack."
+      },
+      
+      {
+        "prompt" : "How can you call async functions in SwiftUI?",
+        "answer" : "In apps built with SwiftUI, the framework itself has various places that can trigger an async function. For example, the refreshable() and task() modifiers can both call async functions freely.\n\n.task {\n  await fetchSource()\n}\n\nAnother option is that Swift provides a dedicated Task API that lets us call async functions from a synchronous function."
+      },
+      
+      
+      {
+        "prompt" : "What is the meaning of the keyword \"await\"?",
+        "answer" : "\"await\" indicates a potential suspension point, where a function may suspend and resume."
+      },
+      
+      {
+        "prompt" : "Why do we use \"async let\"?",
+        "answer" : "Sometimes you want to run several async operations at the same time then wait for their results to come back, and the easiest way to do that is with async let. This lets you start several async functions, all of which begin running immediately – it’s much more efficient than running them sequentially.\n\nA common example of where this is useful is when you have to make two or more network requests, none of which relate to each other. That is, if you need to get Thing X and Thing Y from a server, but you don’t need to wait for X to return before you start fetching Y."
+      },
+      
+      {
+        "prompt" : "What’s the difference between await and async let?",
+        "answer" : "Swift lets us perform async operations using both await and async let, but although they both run some async code they don’t quite run the same: await immediately waits for the work to complete so we can read its result, whereas async let does not. So, use await when it’s important you have a value before continuing, and async let when your work can continue without the value for the time being."
+      },
+      
+      {
+        "prompt" : "What’s the difference between Sequence, AsyncSequence, and AsyncStream?",
+        "answer" : "Swift provides several ways of receiving a potentially endless flow of data, allowing us to read values one by one, or loop over them using for, while, or similar.\n\nThe simplest is the Sequence protocol, which continually returns values until the sequence is terminated by returning nil. Lots of things conform to Sequence, including arrays, strings, ranges, Data, and more. Through protocol extensions Sequence also gives us access to a variety of methods, including contains(), filter(), map(), and others.\n\nThe AsyncSequence protocol is almost identical to Sequence, with the important exception that each element in the sequence is returned asynchronously. This has two major impacts on the way they work.\n\nFirst, reading a value from the async sequence must use await so the sequence can suspend itself while reading its next value. This might be performing some complex work, for example, or perhaps fetching data from a server.\n\nSecond, more advanced async sequences known as async streams might generate values faster than you can read them, in which case you can either discard the extra values or buffer them to be read later on.\n\n"
+      },
+      
+      {
+        "prompt" : "When should one choose Task() rather than TaskGroup()?",
+        "answer" : "Which you choose – Task or TaskGroup – depends on the goal of your work: if you want one or two independent pieces of work to start, then Task is the right choice. If you want to split up one job into several concurrent operations then TaskGroup is a better fit. Task groups work best when their individual operations return exactly the same kind of data, but with a little extra effort you can coerce them into supporting heterogenous data types."
+      },
+      
+      {
+        "prompt" : "How can one cancel a task?",
+        "answer" : "Swift’s tasks use cooperative cancellation, which means that although we can tell a task to stop work, the task itself is free to completely ignore that instruction and carry on for as long as it wants. This is a feature rather than a bug: if cancelling a task made it stop work immediately, the task might leave your program in an inconsistent state.\n\nUse the cancel() method to cancel a task."
+      },
+      
+      {
+        "prompt" : "How can one check if a task has been cancelled?",
+        "answer" : "Use the Task.checkCancellation() method. This is a static function call because it will always apply to whatever task it’s called inside, and it needs to be called using try so that it can throw a CancellationError if the task has been cancelled.\n\nIf you want to handle cancellation yourself – if you need to clean up some resources or perform some other calculations, for example – then instead of calling Task.checkCancellation() you should check the value of Task.isCancelled instead. This is a simple Boolean that returns the current cancellation state, which you can then act on however you want."
+      },
+      
+      {
+        "prompt" : "What’s the difference between a task and a detached task?",
+        "answer" : "If you create a new task using the regular Task initializer, your work starts running immediately and inherits the priority of the caller, any task local values, and its actor context. On the other hand, detached tasks also start work immediately, but do not inherit the priority or other information from the caller."
+      },
+      
+      {
+        "prompt" : "How do you get a Result from a task?",
+        "answer" : "If you want to read the return value from a Task directly, you should read its value using await, or use try await if it has a throwing operation. However, all tasks also have a result property that returns an instance of Swift’s Result struct, generic over the type returned by the task as well as whether it might contain an error or not.\n\nTo summarise:\n1. All tasks can return a Result if you want.\n2. For the error type, the Result will either contain Error or Never.\n3. Although we need to use await to get the result, we don’t need to use try until we try to get the success value inside."
+      },
+      
+      {
+        "prompt" : "How can one control the priority of a task?",
+        "answer" : "Swift tasks can have a priority attached to them, such as .high or .background, but the priority can also be nil if no specific priority was assigned. This priority can be used by the system to determine which task should be executed next, but this isn’t guaranteed – think of it as a suggestion rather than a rule."
+      },
+      
+      {
+        "prompt" : "How can a task can query its current priority?",
+        "answer" : "Any task can query its current priority using Task.currentPriority, but this works from anywhere – if it’s called in a function that is not currently part of a task, Swift will query the system for an answer or send back .medium."
+      },
+      
+      {
+        "prompt" : "How can one make a task sleep?",
+        "answer" : "Swift’s Task struct has a static sleep() method that will cause the current task to be suspended for at least some number of nanoseconds. You need to call Task.sleep() using await as it will cause the task to be suspended, and you also need to use try because sleep() will throw an error if the task is cancelled.\n\nFor example: try await Task.sleep(nanoseconds: 3_000_000_000)\n\nCalling Task.sleep() automatically checks for cancellation, meaning that if you cancel a sleeping task it will be woken and throw a CancellationError for you to catch.\n\nUnlike making a thread sleep, Task.sleep() does not block the underlying thread, allowing it pick up work from elsewhere if needed."
+      },
+      
+      {
+        "prompt" : "How can one voluntarily suspend a task?",
+        "answer" : "If you’re executing a long-running task that has few if any suspension points, for example if you’re repeatedly iterating over an intensive loop, you can call Task.yield() to voluntarily suspend the current task so that Swift can give other tasks the chance to proceed a little if needed.\n\nCalling yield() does not always mean the task will stop running: if it has a higher priority than other tasks that are waiting, it’s entirely possible your task will just immediately resume its work. Think of this as guidance – we’re giving Swift the chance to execute other tasks temporarily rather than forcing it to do so."
+      },
+      
+      {
+        "prompt" : "What is a task group?",
+        "answer" : "Swift’s task groups are collections of tasks that work together to produce a single result. Each task inside the group must return the same kind of data, but if you use enum associated values you can make them send back different kinds of data."
+      },
+      
+      {
+        "prompt" : "Describe the four Task/TaskGroup priorities.",
+        "answer" : "The highest priority is .high, which is synonymous with .userInitiated. As the name implies, this should be used only for tasks that the user specifically started and is actively waiting for.\n\nNext highest is medium, and again as the name implies this is a great choice for most of your tasks that the user isn’t actively waiting for.\n\nNext is .low, which is synonymous with .utility. This is the best choice for anything long enough to require a progress bar to be displayed, such as copying files or importing data.\n\nThe lowest priority is .background, which is for any work the user can’t see, such as building a search index. This could in theory take hours to complete."
+      },
+      
+      {
+        "prompt" : "How can one cancel a task group?",
+        "answer" : "Swift’s task groups can be cancelled in one of three ways:\n\n1. If the parent task of the task group is cancelled.\n\n2. If you explicitly call cancelAll() on the group.\n\n3. If one of your child tasks throws an uncaught error, all remaining tasks will be implicitly cancelled.\n\nCalling cancelAll() will cancel all remaining tasks. As with standalone tasks, cancelling a task group is cooperative: your child tasks can check for cancellation using Task.isCancelled or Task.checkCancellation(), but they can ignore cancellation entirely if they want."
+      },
+      
+      {
+        "prompt" : "What is task local value?",
+        "answer" : "Swift lets us attach metadata to a task using task-local values, which are small pieces of information that any code inside a task can read. The power of task-local values: the ability to create static-like properties inside a task."
+      },
+      
+      {
+        "prompt" : "Is it efficient to create many tasks?",
+        "answer" : "Anything below 10,000 tasks is acceptable."
+      },
+      
+      {
+        "prompt" : "What is an actor, and why does Swift have them?",
+        "answer" : "Swift’s actors are conceptually like classes that are safe to use in concurrent environments. This safety is made possible because Swift automatically ensures no two pieces of code attempt to access an actor’s data at the same time – it is made impossible by the compiler, rather than requiring developers to write boilerplate code using systems such as locks.\n\nSwift’s actors allow us to share data in multiple parts of our app without causing problems with concurrency, because they automatically ensure two pieces of code cannot simultaneously access the actor’s protected data."
+      },
+      
+      {
+        "prompt" : "What are the characteristics of actors?",
+        "answer" : "1. Actors are created using the actor keyword. This is a concrete nominal type in Swift, like structs, classes, and enums.\n\n2. Like classes, actors are reference types. This makes them useful for sharing state in your program.\n\n3. They have many of the same features as classes: you can give them properties, methods (async or otherwise), initializers, and subscripts, they can conform to protocols, and they can be generic.\n\n4. Actors do not support inheritance, so they cannot have convenience initializers, and do not support either final or override.\n\n5. All actors automatically conform to the Actor protocol, which no other type can use. This allows you to write code restricted to work only with actors.\n\n6. When accessing a property or calling a function of an actor from the outside the actor, this must be done using \"await\"."
+      },
+      
+      {
+        "prompt" : "How does one create and use an actor in Swift?",
+        "answer" : "Creating and using an actor in Swift takes two steps:\n\n1. Create the type using actor rather than class or struct,\n\n2. Use await when accessing its properties or methods externally.\n\nSwift ensures that properties and methods must be accessed safely."
+      },
+      
+      {
+        "prompt" : "What is the purpose of the \"isolated\" keyword in Swift?",
+        "answer" : "If we have an actor, and we pass the actor as a parameter to an external function, if the actor parameter is marked \"isolated\", we can then use the actor without using \"await\"."
+      },
+      
+      {
+        "prompt" : "What is the purpose of the \"nonisolated\" keyword in Swift?",
+        "answer" : "All methods and mutable properties inside an actor are isolated to that actor by default, which means they cannot be accessed directly from code that’s external to the actor. Access to constant properties is automatically allowed because they are inherently safe from race conditions, but if you want you can make some methods excepted by using the nonisolated keyword.\n\nActor methods that are non-isolated can access other non-isolated state, such as constant properties or other methods that are marked non-isolated. However, they cannot directly access isolated state like an isolated actor method would; they need to use await instead.\n\nNon-isolated methods are particularly useful when dealing with protocol conformances such as Hashable and Codable, where we must implement methods to be run from outside the actor."
+      },
+      
+      {
+        "prompt" : "What is the \"@MainActor\" in Swift?",
+        "answer" : "@MainActor is a global actor that uses the main queue for executing its work. In practice, this means methods or types marked with @MainActor can (for the most part) safely modify the UI because it will always be running on the main queue, and calling MainActor.run() will push some custom work of your choosing to the main actor, and thus to the main queue."
+      },
+      
+      {
+        "prompt" : "Should Observable Objects be marked \"@MainActor\"?",
+        "answer" : "Add the @MainActor attribute to all observable object classes ensures that all UI updates happen on the main actor."
+      },
+      
+      {
+        "prompt" : "What is the main benefit of using \"@MainActor\"?",
+        "answer" : "The magic of @MainActor is that it automatically forces methods or whole types to run on the main actor, a lot of the time without any further work from us. Previously we needed to do it by hand, remembering to use code like DispatchQueue.main.async() or similar every place it was needed, but now the compiler does it for us automatically."
+      },
+      
+      {
+        "prompt" : "How can you run some code on the MainActor?",
+        "answer" : "If you do need to spontaneously run some code on the main actor, you can do that by calling MainActor.run() and providing your work. This allows you to safely push work onto the main actor no matter where your code is currently running."
+      },
+      
+      {
+        "prompt" : "What is actor hopping and how can it cause problems?",
+        "answer" : "When a thread pauses work on one actor to start work on another actor instead, we call it actor hopping, and it will happen any time one actor calls another.\n\nBehind the scenes, Swift manages a group of threads called the cooperative thread pool, creating as many threads as there are CPU cores so that we can’t be hit by thread explosion. Actors guarantee that they can be running only one method at a time, but they don’t care which thread they are running on – they will automatically move between threads as needed in order to balance system resources.\n\nActor hopping with the cooperative pool is fast – it will happen automatically, and we don’t need to worry about it. However, the main thread is not part of the cooperative thread pool, which means actor code being run from the main actor will require a context switch, which will incur a performance penalty if done too frequently."
+      },
+      
+      {
+        "prompt" : "What are the characteristics of an actor?",
+        "answer" : "1. Are reference types, so are good for shared mutable state.\n\n2. Can have properties, methods, initializers, and subscripts.\n\n3. Do not support inheritance.\n\n4. Automatically conform to the Actor protocol.\n\n5. Automatically conform to the AnyObject protocol, and can therefore conform to Identifiable without adding an explicit id property.\n\n6. Can have a deinitializer.\n\n7. Cannot have their public properties and methods directly accessed externally; we must use await.\n\n8. Can execute only one method at a time, regardless of how they are accessed."
+      },
+      
+      {
+        "prompt" : "What are the characteristics of a class?",
+        "answer" : "1. Are reference types, so are good for shared mutable state.\n\n2. Can have properties, methods, initializers, and subscripts.\n\n3. Support inheritance.\n\n4. Automatically conform to the Actor protocol.\n\n5. Automatically conform to the AnyObject protocol, and can therefore conform to Identifiable without adding an explicit id property.\n\n6. Can have a deinitializer.\n\n7. Can have their public properties and methods directly accessed externally; we must use await.\n\n8. Can potentially be executing severals methods at a time."
+      },
+      
+      {
+        "prompt" : "What are the characteristics of a struct?",
+        "answer" : "1. Are value types, so are copied rather than shared.\n\n2. Can have properties, methods, initializers, and subscripts.\n\n3. Do not support inheritance.\n\n4. Cannot conform to the Actor protocol.\n\n5. Cannot conform to the AnyObject protocol; if you want to add Identifiable conformance you must add an id property yourself.\n\n6. Cannot have a deinitializer.\n\n7. Can have their public properties and methods directly accessed externally.\n\n8. Can potentially be executing severals methods at a time."
+      },
+      
+      {
+        "prompt" : "What does \"flatMap()\" do?",
+        "answer" : "flatMap() is used to process \"optional optionals\". It performs a transformation (the “map” part of its name), and then flattens what comes back so that “optional optional” just becomes “optional”.\n\nThat is, either the whole thing exists or nothing exists – it flattens double optionals down to single optionals. Ultimately we don’t care about whether the outer or inner optional exists, only whether there’s a value inside there or not, which is why flatMap() is so useful."
+      }
+    ]
+  },
+  
+  {
+    "title" : "Miscellaneous",
+    "description" : "Questions that cover how you interact with Apple, other developers, designers, and more.",
+    "questions" : [
+   
+    {
+      "prompt" : "How do you keep yourself up-to-date on Swift?",
+      "answer" : "Demonstrate a commitment to learning more Swift. Consider subscribing to iOS Dev Weekly, Swift Weekly Brief, and This Week in Swift."
+    },
+    {
+      "prompt" : "What does the \"fixedSize()\" modifier do?",
+      "answer" : "\"fixedSize\" fixes a view at its ideal size.\n\nDuring the layout of the view hierarchy, each view proposes a size to each child view it contains. If the child view doesn’t need a fixed size it can accept and conform to the size offered by the parent.\n\nApple describes fixedSize() as “the creation of a counter proposal to the view size proposed to a view by its parent."
+    },
+    {
+      "prompt" : "What is meant by \"Layout neutral\"?",
+      "answer" : "Not all views have a meaningful ideal size, and in fact some views have very little sizing preference at all – they will happily adapt their own size based on the way we use them alongside other views.\n\nThis is called being layout neutral, and a view can be layout neutral for any combination of its six dimensions.\n\n\"Color.red\" is an example of layout neutrality, as is the Text() view"
+    },
+   
+    {
+      "prompt" : "What are XCTest?",
+      "answer" : "The XCTest framework is used to write unit tests for Xcode projects that integrate seamlessly with Xcode's testing workflow.\n\nTests assert that certain conditions are satisfied during code execution, and record test failures (with optional messages) if those conditions aren’t satisfied.\n\nTests can also measure the performance of blocks of code to check for performance regressions, and can interact with an application's UI to validate user interaction flows."
+    },
+    
+    {
+      "prompt" : "What is a code review?",
+      "answer" : "Code Review, also known as Peer Code Review, is the act of consciously and systematically convening with one’s fellow programmers to check each other’s code for mistakes.\n\nCode reviews, for example, Fagan Reviews, have been repeatedly shown to accelerate and streamline the process of software development. "
+    },
+    
+    {
+      "prompt" : "What is test-driven development?",
+      "answer" : "Test-driven development (TDD) is a software development process relying on software requirements being converted to test cases before software is fully developed, and tracking all software development by repeatedly testing the software against all test cases. This is as opposed to software being developed first and test cases created later.\n\nTest-driven development is related to the test-first programming concepts of extreme programming."
+    },
+    
+    {
+      "prompt" : "What is business-driven development?",
+      "answer" : "Business-driven development is a methodology for developing IT solutions that directly satisfy business requirements. This is achieved by adopting a model-driven approach that starts with the business strategy, requirements and goals, and then refines and transforms them into an IT solution.\n\nThe transformation is partially achieved by applying model transformations. Due to the alignment of the business layer and the IT layer, it is possible to propagate changes of the business automatically to the IT systems.\n\nThis leads to increased flexibility and shorter turnaround times when changing the business and adapting the IT systems"
+    },
+    {
+      "prompt" : "How does Swift compare to Objective-C?",
+      "answer" : "Swift is a much more modern programming language and includes optionality, tuples, value types, Codable, generics, among other things. However, Objective-C has C and C++ compatibility, and compiles significantly faster."
+    },
+    
+    {
+      "prompt" : "What is the Swift Package Manager and how is it used?",
+      "answer" : "SPM is an alternative to CocoaPods or Carthage; it is a dependency management tool."
+    },
+    
+    {
+      "prompt" : "What is the purpose of code signing in Xcode?",
+      "answer" : "Code signing is used for verifying a developer's identity, and also for how provisioning profiles enable functionality.  It is used for security on the App Store, by verifying developer identities."
+    }
+  ]
+  },
+  {
+    "title" : "Performance",
+    "description" : "Questions about improving your apps to be faster, more efficient, less crashy, and similar.",
+    "questions" : [
+    {
+      "prompt" : "What is a retain cycle and how is it resolved?",
+      "answer" : "A retain cycle can be a memory leak. Use either Instruments or the Memory Graph Debugger to identify. Leaks don’t always means retain cycles (for example, unused caches are effectively leaks), but they are a good starting point. A retain cycle can be resolved by making one side of the cycle weak rather than strong."
+    },
+    {
+      "prompt" : "What is an efficient way to cache data in memory?",
+      "answer" : "A simple dictionary can be used to cache memory, or use NSCache. NSCache is preferable over a simple dictionary because it automatically gets cleared by the system when memory is low."
+    },
+    {
+      "prompt" : "How does one identify and resolve battery life issues?",
+      "answer" : "Try optimizing drawing, batching network requests, and minimizing work when the user isn’t interacting with the app.  The battery settings app on iOS automatically shows which apps use the most battery life for a user, and can be used to identify poor performing apps."
+    },
+    {
+      "prompt" : "How can one identify and resolve crashes?",
+      "answer" : "Use breakpoints, assert() or precondition(). Write to a logs, and download crash logs from iTunes Connect"
+    },
+    {
+      "prompt" : "How does Swift handle memory management?",
+      "answer" : "Automatic Reference Counting (ARC). ARC is used to initialize and deinitialize the system resources thereby releasing memory spaces used by the class instances when the instances are no longer needed. ARC keeps track of information about the relationships between code instances to manage the memory resources effectively."
+    },
+    
+    {
+      "prompt" : "How can one identify and resolve a memory leak?",
+      "answer" : "Use Instruments to check persistent vs transient objects; filter by custom data types."
+    },
+    {
+      "prompt" : "How can one identify and resolve performance issues?",
+      "answer" : "\"Performance\" has many forms, for example, for graphical performance then consider using the Core Animation instrument to identify slow drawing.\n\nFor code performance then consider stack traces, retain cycles, unnecessary caches, and similar – using Instruments as appropriate.\n\nFor network performance, consider batching requests to reduce battery wastage or using compression to save bandwidth."
+    }
+  ]
+  },
+  {
+    "title" : "Security",
+    "description" : "Questions about how you store and send data.",
+    "questions" : [
+    {
+      "prompt" : "What are Face ID and Touch ID?",
+      "answer" : "These are used for secure user data, where biometric authentication is required. There should be a password backup in case Face ID/Touch ID fails; an alternative is the keychain for secure storage.'"
+    },
+    {
+      "prompt" : "What is App Transport Security?",
+      "answer" : "It requires HTTPS for the secure transmission of data. It is required by Apple's app review guidelines."
+    },
+    {
+      "prompt" : "What is the keychain?",
+      "answer" : "The keychain is used to store secure data on Apple's platforms. It is important for storing sensitive information and ispreferable to UserDefaults"
+    },
+    {
+      "prompt" : "How would you calculate the secure hash value for some data?",
+      "answer" : "Secure hash values use something like SHA-3, and can be implemented using Apple's CryptoKit framework, which can do hashing and encryption quickly, efficiently, and correctly."
+    }
+  ]
+  },
+  {
+    "title" : "Swift",
+    "description" : "Questions about the Swift language itself.",
+    "questions" : [
+    {
+      "prompt" : "How would you compare two tuples to ensure their values are identical?",
+      "answer" : "Swift provides automatic tuple comparison ever since Swift 2.2. Use \"==\" to compare tuples item by item.  Tuple comparison does not guarantee that both tuples use the same element names."
+    },
+    {
+      "prompt" : "What is operator overloading?",
+      "answer" : "Operator overloading allows the use of the same + operator with multiple types, such as integers, strings, doubles, and more."
+    },
+    {
+      "prompt" : "What are protocols?",
+      "answer" : "A protocol defines a blueprint of methods, properties, and other requirements that suit a particular task or piece of functionality. The protocol can then be adopted by a class, structure, or enumeration to provide an actual implementation of those requirements. Any type that satisfies the requirements of a protocol is said to conform to that protocol.\n\nIn addition to specifying requirements that conforming types must implement, a protocol can be extended to implement some of these requirements or to implement additional functionality that conforming types can take advantage of."
+    },
+    {
+      "prompt" : "In which situations do Swift functions not need a return keyword?",
+      "answer" : "There are three: when the function isn’t supposed to return a value, when it is supposed to return a value but you’ve used something like fatalError() to skip that requirement, and when it returns a value using a single expression.\n\nThe second case is useful when you have placeholder functions you haven’t implemented yet, or have created an abstract class where child classes will override your erroring implementations."
+    },
+    {
+      "prompt" : "What are property observers?",
+      "answer" : "Property observers run code before or after a property is modified, for example: \"if you have a score property that holds an integer, you might attach a didSet observer so that it updates a label whenever the score changes.\"\n\nA  problem with property observers is that you might think that adding 1 to an integer is a nice and quick operation, but if you accidentally attach a complex property observer then it could cause havoc."
+    },
+    {
+      "prompt" : "What are raw strings?",
+      "answer" : "Raw strings are made by placing a hash before and after your string quotes; they are used for strings where lots of instances of quote marks or backslashes appear to make the string easier to read; and string interpolation must also use a hash in order to become active. More than one hash can be used if required.\n\nFor example:\n\n  let message = #\"Hey there cowboy! \\#n In reverse land, the current date is 2020\\01\\10!\"#"
+    },
+    {
+      "prompt" : "What does the #error compiler directive do?",
+      "answer" : "The #error compiler directive forces the compiler to emit an error using a specified message. For example, if shipping some sample code where users need to enter an API key otherwise it won’t work, so you use #error next to the API key line saying “fill in your API key before continuing.” Alternatively, use #error alongside an OS check to say that code isn’t compatible with tvOS, for example."
+    },
+    {
+      "prompt" : "What does the #if swift syntax do?",
+      "answer" : "The syntax was added in Swift 2.2 to support compile-time version checking, meaning that you can mix two different Swift versions in one file without errors because only one will be used at a time.  For example, Swift 5.4 supports colors such as .red.opacity(0.5) whereas older versions need to use Color.red.opacity(0.5)."
+    },
+    {
+      "prompt" : "What does the assert() function do?",
+      "answer" : "The assert() function evaluates some code and causes the app to crash if the result is false. This is actually helpful because the check only happens in debug mode."
+    },
+    {
+      "prompt" : "What does the canImport() compiler condition do?",
+      "answer" : "canImport() returns true if a module such as UIKit can be imported, for example, writing code that does one thing using UIKit on iOS, and another thing using AppKit on macOS."
+    },
+    {
+      "prompt" : "What does the CaseIterable protocol do?",
+      "answer" : "The CaseIterable protocol allows us to loop over all cases in an enum"
+    },
+    {
+      "prompt" : "What does the final keyword do, and when is it used?",
+      "answer" : "The final keyword means that a class can not be sub-classed. Sometimes a class does something precise, and should not be overridden."
+    },
+    {
+      "prompt" : "What does the nil coalescing operator do?",
+      "answer" : "The nil coalescing operator (??) lets you provide a default value to use if an optional value is empty. For example:\n\n  let name = person?.name ?? \"anon\""
+    },
+    {
+      "prompt" : "What is the difference between if let and guard let?",
+      "answer" : "Both check and unwrap optionals, but guard forces an early return if its check fails – the code will not compile unless you exit the scope. Furthermore, any variables that guard unwraps stay in scope after the guard block, whereas with if let the variables are available only inside the scope."
+    },
+    {
+      "prompt" : "What is the difference between try, try?, and try! in Swift?",
+      "answer" : "A regular try requires you to catch errors, try? converts the throwing call into an optional where you’ll get back nil on failure, and try! will cause your app to crash if the throwing call fails. All three have their uses."
+    },
+    {
+      "prompt" : "What problem does optional chaining solve?",
+      "answer" : "Optional chaining makes code more concise because we can write multiple optional calls on one line but have execution skip over the line if any of the optionals are missing.  This also works with things like try? and as?."
+    },
+    {
+      "prompt" : "What's the difference between String? and String! in Swift?",
+      "answer" : "String? marks an optional string, and String! marks an implicitly unwrapped string."
+    },
+    {
+      "prompt" : "When would you use the guard keyword in Swift?",
+      "answer" : "It’s most commonly used to check preconditions are satisfied, and it allows variables it creates remain in scope after the guard block, and also how it enforces you exit the scope if the precondition fails.  A guard can be used inside any kind of block as long as you escape afterwards – you can use it inside a loop for example."
+    },
+    {
+      "prompt" : "Apart from the built-in ones, can you give an example of property wrappers?",
+      "answer" : "If it weren’t for the built-in restriction, this would be easy to answer with @State, @EnvironmentObject, and more, but with that restriction in place you need to be more creative – what real example can you think of? For example, a wrapper to make sure numbers are never negative, or strings are never empty, or perhaps arrays that silently stay sorted."
+    },
+    {
+      "prompt" : "Can you give useful examples of enum associated values?",
+      "answer" : "Enum associated values let us attach one or more extra pieces of data to enum cases. For instance, you might describe a weather enum that lists sunny, windy, and rainy as cases, but has an associated value for cloudy so that you can store the cloud coverage. Or you might describe types of houses, with the number of bedrooms being an associated integer.\n\nFor example:\n\nenum Barcode {\n  case upc(Int, Int, Int, Int)\n  case qrCode(String)\n}"
+    },
+    {
+      "prompt" : "What are closures?",
+      "answer" : "Closures are self-contained blocks of functionality that can be passed around and used in your code. Closures in Swift are similar to blocks in C and Objective-C.\n\nClosures can capture and store references to any constants and variables from the context in which they’re defined. This is known as closing over those constants and variables.\n\nGlobal and nested functions, as introduced in Functions, are actually special cases of closures. Closures take one of three forms:\n\nGlobal functions are closures that have a name and don’t capture any values.\n\n  Nested functions are closures that have a name and can capture values from their enclosing function.\n\n  Closure expressions are unnamed closures written in a lightweight syntax that can capture values from their surrounding context."
+    },
+    
+    {
+      "prompt" : "What is meant by \"Capturing Values\"?",
+      "answer" : "A closure can capture constants and variables from the surrounding context in which it’s defined. The closure can then refer to and modify the values of those constants and variables from within its body, even if the original scope that defined the constants and variables no longer exists.\n\nIn Swift, the simplest form of a closure that can capture values is a nested function, written within the body of another function. A nested function can capture any of its outer function’s arguments and can also capture any constants and variables defined within the outer function."
+    },
+    
+    {
+      "prompt" : "What are generics and why are they useful?",
+      "answer" : "Generics allow us to create types and functions that can be adapted to use different kinds of data for extra flexibility and safety.  Generics are most commonly used to add type safety to collections – even if you don't create them yourself much, you certainly use them because [String] is really Array<String> under the hood.\n\nProtocols use associated types rather than generics to achieve a similar result."
+    },
+    
+    {
+      "prompt" : "What are Data Races?",
+      "answer" : "Data races occur when the same memory is accessed from multiple threads without synchronization, and at least one access is a write. Data Races can lead to several issues:\n\nUnpredictable behavior\nMemory corruption\nFlaky tests\nWeird crashes\n\nAs a Data Race is unpredictable, it can be inconsistently occurring when testing your app. You might have a crash on startup that is not occurring again the second time you start your app. If this is the case, you might be dealing with a Data Race."
+    },
+    
+    {
+      "prompt" : "In XCode, what is TSan?",
+      "answer" : "TSan is the Thread Sanitizer. It is an LLVM based tool to audit threading issues in your Swift and C language written code. It was first introduced in Xcode 8 and is useful for finding less visible bugs in the code, like data races."
+    },
+    
+    {
+      "prompt" : "Name a disadvantage of using lazy variables.",
+      "answer" : "A lazy variable delays the initialization of an instance to the moment it gets called for the first time. This means that a data write will happen at the first moment a lazy variable is accessed. When two threads access this same lazy variable for the first time, a Data Race can occur."
+    },
+    
+    {
+      "prompt" : "What are multi-pattern catch clauses?",
+      "answer" : "Swift’s catch blocks let us catch several types of errors, specified using comma separation – hence the “multi-pattern” clauses.\n\nThey are useful as a way of grouping error handling code together: if the error thrown was A or B then take the same action, but if it was C or D take some other action.\n\nFor example:\n\ndo { \n    let result = try checkReactorOperational() \n    print(\"Result: \\(result)\") \n} catch TemperatureError.tooHot, TemperatureError.tooCold { \n    print(\"Shut down the reactor!\") \n} catch { \n    print(\"An unknown error occurred.\")"
+    },
+    
+    {
+      "prompt" : "What is an observable object?",
+      "answer" : "An observable object is a custom object for your data that can be bound to a view from storage in SwiftUI’s environment. SwiftUI watches for any changes to observable objects that could affect a view, and displays the correct version of the view after a change.\n\nAn observable object needs to publish any changes to its data, so that its subscribers can pick up the change."
+    },
+    
+    {
+      "prompt" : "What is the purpose of GeometryReader?",
+      "answer" : "You use GeometryReader to dynamically draw, position, and size views instead of hard-coding numbers that might not be correct when you reuse a view somewhere else in your app, or on a different-sized display.\n\nGeometryReader dynamically reports size and position information about the parent view and the device, and updates whenever the size changes; for example, when the user rotates their iPhone."
+    },
+    
+    {
+      "prompt" : "Which protocol do you use to bridge UIKit view controllers into SwiftUI?",
+      "answer" : "UIViewControllerRepresentable.\n\nCreate a structure that conforms to UIViewControllerRepresentable and implement the protocol requirements to include a UIViewController in your SwiftUI view hierarchy."
+    },
+    
+    {
+      "prompt" : "What does the @main attribute do?",
+      "answer" : "This attribute marks the point where the program starts to run. When using this attribute with one of your types need to implement a main() method to handle setting up your program, but if you’re using SwiftUI the App protocol provides that for you."
+    },
+    {
+      "prompt" : "What does the #available syntax do?",
+      "answer" : "This syntax was introduced in Swift 2.0 to allow run-time version checking of features by OS version number. It allows you to target an older version of iOS while selectively limiting features available only in newer iOS versions, all carefully checked by the compiler to avoid human error.\n\nFor example:\n\nif #available(iOS 15, *) {\n  print(\"This code only runs on iOS 15 and up\") } else {\n  print(\"This code only runs on iOS 14 and lower\")\n}"
+    },
+    {
+      "prompt" : "What is a variadic function?",
+      "answer" : "Variadic functions accept any number of parameters. Swift writes them using ..., and we’re handed the parameters as an array, for example, print(). Swift 5.4 and later allow multiple variadic parameters."
+    },
+    {
+      "prompt" : "What is an escaping closure?",
+      "answer" : "A closure is said to escape a function when the closure is passed as an argument to the function, but is called after the function returns. When you declare a function that takes a closure as one of its parameters, you can write @escaping before the parameter’s type to indicate that the closure is allowed to escape.\n\nOne way that a closure can escape is by being stored in a variable that’s defined outside the function. As an example, many functions that start an asynchronous operation take a closure argument as a completion handler. The function returns after it starts the operation, but the closure isn’t called until the operation is completed—the closure needs to escape, to be called later."
+    },
+    
+    {
+      "prompt" : "What is an autoclosure?",
+      "answer" : "An autoclosure is a closure that’s automatically created to wrap an expression that’s being passed as an argument to a function. It doesn’t take any arguments, and when it’s called, it returns the value of the expression that’s wrapped inside of it. This syntactic convenience lets you omit braces around a function’s parameter by writing a normal expression instead of an explicit closure.\n\nIt’s common to call functions that take autoclosures, but it’s not common to implement that kind of function. For example, the assert(condition:message:file:line:) function takes an autoclosure for its condition and message parameters; its condition parameter is evaluated only in debug builds and its message parameter is evaluated only if condition is false.\n\nAn autoclosure lets you delay evaluation, because the code inside isn’t run until you call the closure. Delaying evaluation is useful for code that has side effects or is computationally expensive, because it lets you control when that code is evaluated."
+    },
+    
+    {
+      "prompt" : "Is a closure a reference or value type?",
+      "answer" : "Functions and closures are reference types.\n\nWhenever you assign a function or a closure to a constant or a variable, you are actually setting that constant or variable to be a reference to the function or closure."
+    },
+    
+    {
+      "prompt" : "What is meant by \"capturing values\"?",
+      "answer" : "A closure can capture constants and variables from the surrounding context in which it’s defined. The closure can then refer to and modify the values of those constants and variables from within its body, even if the original scope that defined the constants and variables no longer exists.\n\nIn Swift, the simplest form of a closure that can capture values is a nested function, written within the body of another function. A nested function can capture any of its outer function’s arguments and can also capture any constants and variables defined within the outer function."
+    },
+    
+    {
+      "prompt" : "What is the difference between weak and unowned?",
+      "answer" : "Weak becomes a regular optional whereas unowned is an implicitly unwrapped optional."
+    },
+    {
+      "prompt" : "What is the difference between an escaping closure and a non-escaping closure?",
+      "answer" : "If a closure is passed as a function parameter and that closure might be called after the function has returned (e.g. after a delay), it must be marked as escaping.  Swift uses non-escaping closures by default – they remove a small performance hit caused by Swift needing to keep escaping closures alive in memory after the function finishes."
+    },
+    {
+      "prompt" : "What is the difference between an extension and a protocol extension?",
+      "answer" : "Extensions add functionality to specific data types, e.g. Int. Protocol extensions add functionality to protocols, for example all kinds of integers at the same time – Int, Int8, UInt64, and so on.  Protocol extensions enable protocol-oriented programming."
+    },
+    {
+      "prompt" : "When would you use the defer keyword in Swift?",
+      "answer" : "This is used to delay a piece of work until a function ends, similar to how try/finally works in some other languages, for example, saving a file once everything has been written – any kind of work that absolutely must take place.  Multiple pieces of work can be deferred, and are executed in reverse as Swift unwinds the defer stack."
+    },
+    {
+      "prompt" : "What are key paths?",
+      "answer" : "Key paths let us refer to a property in a type rather than the exact value of that property in one particular instance. Forh example, using the map() method with a key path, to convert an array of users into an array of strings containing just their names, or perhaps using filter() to filter an array based on which items have a Boolean property set to true."
+    },
+    {
+      "prompt" : "What are conditional conformances?",
+      "answer" : "Protocol conformances allow us to say that one type conforms to a protocol such as Hashable or Equatable; conditional conformances means conforming to a protocol only if a condition is true. For example, Array conforming to a Purchaseable protocol only if it contains elements that also conform to Purchaseable."
+    },
+    {
+      "prompt" : "What are opaque return types?",
+      "answer" : "Whenever \"some\" appears in a return type, it’s an opaque return type. This means that some kind of type will be returned, but we don’t want to say what.  An opaque return type is not the same as returning a protocol, because in the latter your returned value can be absolutely anything whereas in the former the compiler knows what data was actually returned even if you don’t get access to that. SwiftUI uses @ViewBuilder to silently allow us to return different view types from a view body."
+    },
+    {
+      "prompt" : "What are result builders and when are they used in Swift?",
+      "answer" : "Result builders allow us to create a new value step by step by passing in a sequence of our choosing, for example, SwiftUI uses a VStack with a variety of views inside which silently groups them together into an internal TupleView type so that they can be stored as a single child of the VStack – it turns a sequence of views into a single view."
+    },
+    {
+      "prompt" : "What does the targetEnvironment() compiler condition do?",
+      "answer" : "It allows us to compile one set of code for the simulator, and another set of code for physical devices. This may be useful when developing, for example, a game that uses Core Motion to handle tilting movement on a real device, whereas on the simulator you need to tap the screen to simulate motion."
+    },
+    {
+      "prompt" : "What is the difference between self and Self?",
+      "answer" : "\"self\", which refers to the current object your code is running inside, whereas \"Self\", which refers to the current type your code is running inside. This is remembered this by looking at the capital letter: we name our types using a capital first letter, so Self refers to a type."
+    },
+    {
+      "prompt" : "When would you use @autoclosure?",
+      "answer" : "@autoclosure silently turns a function’s parameter into a closure so that it can be executed on demand rather than immediately, for example, assert(). This is used because the autoclosure behavior here ensures our assertion doesn’t happen in release mode, so it won’t have a performance impact in the App Store."
+    }
+  ]
+  },
+  {
+    "title" : "SwiftUI",
+    "description" : "Questions about building apps with SwiftUI.",
+    "questions" : [
+      {
+        "prompt" : "Why does modifier order matter?",
+        "answer" : "Modifier order matters because SwiftUI wraps views with modifiers in the order they are applied."
+      },
+      
+      {
+        "prompt" : "What are \"overlays\"?",
+        "answer" : "Overlays are created using an overlay() modifier, which lets us create new views at the same size and position as the view we’re overlaying."
+      },
+      
+      {
+        "prompt" : "What does the \"offset\" modifier do?",
+        "answer" : "SwiftUI has a dedicated modifier called offset(), which lets us adjust the X and Y coordinate of a view without moving other views around it. Discrete X and Y coordinates can be used, or CGSize directly"
+      },
+      
+    {
+      "prompt" : "What is the SwiftUI’s environment?",
+      "answer" : "The environment acts a bit like a singleton manager – objects are placed in there and share them in many places. The environment can be subdivided, allowing some views to have different environment objects."
+    },
+    
+    {
+      "prompt" : "What is the \"main actor\" in SwiftUI?",
+      "answer" : "To avoid causing graphical corruption or destroying user data by accident, all our user interface work is through a single piece of code called the main actor – all the UI creation, all the image loading, all the button actions, and so on all take place on that main actor, and because it can only do one thing at a time it means we can’t accidentally have two pieces of code fighting over the same piece of data."
+    },
+    
+    {
+      "prompt" : "In swiftUI, when do we need to explicitly identify a view?",
+      "answer" : "There are two key places where we use explicit identity:\n\n1. When we’re dealing with dynamic data, such as looping over an array.\n\n2. When we need to refer to a particular view, such as scrolling to a particular location."
+    },
+    
+    {
+      "prompt" : "What does the @Published property wrapper do?",
+      "answer" : "When used inside an ObservableObject an @Published property will automatically send out change notifications when its value changes. For example, a class you’re using in SwiftUI has an array of todo list items, and when that array changes the UI should update – a simple, real-world use for @Published."
+    },
+    {
+      "prompt" : "What does the @State property wrapper do?",
+      "answer" : "The @State allows us to mutate a value that belongs to a struct without using mutating methods. For example, storing text in a TextField."
+    },
+    {
+      "prompt" : "What's the difference between a view's initializer and onAppear()?",
+      "answer" : "Using init() and onAppear() both let us run some code early in a view's lifecycle, however it's important to understand the difference between them.\n\nSwiftUI creates all its view structs immediately, even creating destination views for navigation links, which means that initializers are run immediately and that's probably not something you want.\n\nIn comparison, code placed in an onAppear() modifier is called only when the view is shown for the first time, so it's the right place to do complex work."
+    },
+    {
+      "prompt" : "When would you use @StateObject versus @ObservedObject?",
+      "answer" : "Both of these property wrappers monitor an observable object for changes, and refresh SwiftUI views when changes happen.\n\nHowever, @StateObject is used when you create an object for the first time and want to retain ownership of it, whereas @ObservableObject is used in other places where you pass the object and does not retain ownership."
+    },
+    {
+      "prompt" : "How can an observable object announce changes to SwiftUI?",
+      "answer" : "There are two primary ways this is done: using the @Published property wrapper, or by calling objectWillChange.send() directly.\n\nYou might use @Published by default, switching over to objectWillChange.send() for times when you need more fine-grained control."
+    },
+    {
+      "prompt" : "How would you create programmatic navigation in SwiftUI?",
+      "answer" : "SwiftUI makes simple navigation as easy as it should be, but programmatic navigation is trickier because you need to declare all your states up front.  If you want to talk about tags for NavigationLink views you can, but I would say the important thing here is to think about why it's important – handling deep links from Spotlight or widgets are both good places where you need to navigate programmatically."
+    },
+    {
+      "prompt" : "What is the purpose of the ButtonStyle protocol?",
+      "answer" : "SwiftUI provides several built-in button styles depending on which platform you're targetting, and the ButtonStyle protocol allows us to create new button styles that can be reused across our apps to get consistent designs.  For example, compare and contrast ButtonStyle with PrimitiveButtonStyle."
+    },
+    {
+      "prompt" : "When would you use GeometryReader?",
+      "answer" : "GeometryReader allows us to read the size and location of a view, which means we can create proportional layouts or create adaptive modifiers that change their values as a view moves around the screen."
+    },
+
+    {
+      "prompt" : "Why does SwiftUI use structs for views?",
+      "answer" : "Structs are used because they are much simpler and much more efficient than classes. SwiftUI is free to recreate your view structs whenever and as often as it wants, so performance needs to be good."
+    }
+  ]
+  },
+  {
+    "title" : "UIKit",
+    "description" : "Questions about building apps with UIKit.",
+    "questions" : [
+   
+   {
+     "prompt" : "What attribute must list data have?",
+     "answer" : "Lists work with identifiable data. You can make your data identifiable in one of two ways: by passing along with your data a key path to a property that uniquely identifies each element, or by making your data type conform to the Identifiable protocol."
+   },
+   
+   {
+     "prompt" : "What is the purpose of @main?",
+     "answer" : "An app that uses the SwiftUI app life cycle has a structure that conforms to the App protocol. The structure’s body property returns one or more scenes, which in turn provide content for display. The @main attribute identifies the app’s entry point."
+   },
+   
+    {
+      "prompt" : "What are UIKit segues?",
+      "answer" : "Segues let us change the currently active view controller, for example, moving forward through view controllers, or perhaps using unwind segues.  Values between view controllers using segues."
+    },
+    {
+      "prompt" : "What are storyboard identifiers for?",
+      "answer" : "Storyboard identifiers allow us to reference one specific view controller inside a storyboard, usually so that we can create an instance of it. Unless a view controller is marked as the initial view controller for a storyboard, giving it an identifier is the only way to reference it in code."
+    },
+    {
+      "prompt" : "What are the benefits of using child view controllers?",
+      "answer" : "View controllers can grow to hideous proportions, and presenting child view controllers provide the ability to separate parts of the UI into smaller chunks, retaining all the same functionality but making the code simpler. Child view controllers can also make the code more reusable, because the child can be used in other parent view controllers."
+    },
+    {
+      "prompt" : "What are the pros and cons of using viewWithTag()?",
+      "answer" : "The only real pro is that it’s an easy fix to finding a view, used particularly when you don’t want to bother creating a custom table view cell class. But the tag number might change in the future, and magic numbers should be avoided."
+    },
+    {
+      "prompt" : "What is the difference between @IBOutlet and @IBAction?",
+      "answer" : "One is a property the other is a method, but both are effectively just empty markers that help Interface Builder recognize parts of our code that are relevant to it."
+    },
+    {
+      "prompt" : "What is the difference between a UIImage and a UIImageView?",
+      "answer" : "Images hold uncompressed graphics data ready to draw, image views display image data at a specific location on the screen."
+    },
+    {
+      "prompt" : "What is the difference between aspect fill and aspect fit when displaying an image?",
+      "answer" : "Aspect fit ensures all parts of the image are visible even if it means there is some space around the edges, whereas aspect fill may crop the image to ensure it takes up all available space."
+    },
+    {
+      "prompt" : "What is the purpose of UIActivityViewController?",
+      "answer" : "This UIKit class has only one function: sharing your app’s content using whatever other apps the user has. This might mean printing, posting to social media, saving an image to your photo library, and so on."
+    },
+    {
+      "prompt" : "What is the purpose of reuse identifiers for table view cells?",
+      "answer" : "Major performance increase by not creating new cells as the user scrolls, but if you modify a cell then try to reuse it, the modifications stay intact."
+    },
+    {
+      "prompt" : "What is the purpose of UIVisualEffectView?",
+      "answer" : "This is used to blur backgrounds, either light or dark, so that text can be overlaid more easily.\n\nYou can optionally enable vibrancy, which causes the text to be rendered in a bright, contrasting color alongside the blur.  This is useful when we need to keep parts of the UI visible, even when it's just blurred, to help provide some extra context to your user of where they are in the app."
+    },
+    {
+      "prompt" : "When would you choose to use a collection view rather than a table view?",
+      "answer" : "Collection views are there to display grids, but also handle entirely custom layouts, whereas table views are simple linear lists with headers and footers. "
+    },
+
+    {
+      "prompt" : "How does a view's intrinsic content size aid in Auto Layout?",
+      "answer" : "It describes how much space the view needs to lay out its content naturally, such as the amount of space some text needs to be fitted exactly.\n\nIntrinsic content sizes are used so that views occupy their natural amount of space by default, before the system decides if any views need to be stretched or squeezed."
+    },
+    {
+      "prompt" : "What is the function of anchors in Auto Layout?",
+      "answer" : "Anchors are one way of expressing Auto Layout constraints, and are neatly concise: this width should be the same as that width, this leading edge should be aligned to that leading edge, and so on."
+    },
+    {
+      "prompt" : "What is the purpose of IBDesignable?",
+      "answer" : "Marking a custom view as IBDesignable allows Xcode to render a preview of it when editing storyboards. It's useful when creating custom view subclasses and want to see them rendered live in IB, particularly when you want to set their properties there too."
+    },
+    {
+      "prompt" : "What is the purpose of UIMenuController?",
+      "answer" : "These are the small, black popup menus that appear when you interact with text fields, for example – Cut and Paste."
+    }
+  ]
+  },
+  {
+    "title" : "Swift Coding",
+    "description" : "General coding questions",
+    "questions" : [
+      {
+          "prompt" : "What causes an error here?\n\nlet n1: Int = 1\nlet n2: Float = 2.0\nlet n3: Double = 3.34\nvar result = n1 + n2 + n3",
+          "answer": "In Swift, implicit type casting between two data types is not possible.\n\nIn the code above, you’re trying to add three elements together, each of which represents a different data type.\n\nTo fix this, you need to convert each value to the same data type.\n\nFor example:\n  var result = Double(n1) + Double(n2) + n3"
+        },
+        {
+          "prompt" : "What is the value of len?\n\nvar arr1 = [1, 2, 3]\nvar arr2 = arr1\narr2.append(4)\nvar len = arr1.count",
+          "answer": "The value of len is 3, i.e. the number of elements in arr1 is 3. This is because assigning arr1 to arr2 actually means that a copy of arr1 is assigned to arr2, so the arr1 is not affected.\n\nIn Swift, all the basic data types (booleans, integers, etc.), enums, and structs are value types by nature.\n\nArrays are value types too. When moving a value type around in Swift, you’re essentially working with the copy of it.\n\nFor example, when passing a value type as an argument to a function, a copy of it is created, so whatever the function does is not reflected in the original value."
+        },
+        {
+          "prompt" : "What’s the issue and how can it be fixed?\n\nConsider this piece of code that tries to retrieve a theme color from the local storage of an iOS device.\n\nvar color = UserDefaults.standard.string(forKey:\"themeColor\")!\nprint(color)\n\nCan you spot the mistake and fix it?",
+          
+          "answer": "The first line retrieves a theme color from the user defaults. This method, however, returns an optional (because the themeColor might not be defined). If the key is not found, a nil is returned the above code crashes with:\n\nfatal error: unexpectedly found nil while unwrapping an Optional value\n\nThis happens as the first line is using ! to force unwrap the optional, which is now a nil. Force unwrapping should be only used when you’re 100% sure the value is not nil.\n\nTo fix this, you can use optional binding to check if the value for the key is found:\n\nif let color = defaults.stringForKey(\"themeColor\") {\nprint(color)\n}"
+        },
+        {
+          "prompt" : "What potential improvements can you see?\n\nYou are reviewing a pull request and encounter this method\n\nfunc turnTo(direction: String){\n if direction == \"North\" {\n northAction()\n } else if direction == \"East\" {\n eastAction()\n } else if direction == \"South\" {\n southAction()\n } else if direction == \"West\" {\n westAction()\n } else {\n print(\"No valid direction specified\")\n }\n }\n",
+          
+          "answer": "Even though this code might work, there are two things that should be considered.\n\nUsing hard-coded strings like (e.g.\"West\") is a bad idea. What if someone miss-spells it? To remedy this issue, the hard-coded strings should be abandoned and an enumeration should be created instead.\n\nAlso, how about using a switch statement instead of a lengthy if-else statement?\n\nWith these improvements, the code becomes type-safer and readable:"
+        },
+        {
+          "prompt" : "What are enumerations in Swift?",
+          "answer": "An enumeration is a group of related values.\nEnumerations make it possible to write type-safe code.\nenum Direction {\n case North\n  case East\n case South\n  case West\n}\n\nNow, in your code, you can call Direction.North, for example, instead of using a mystic string \"North\" (that could easily be misspelled and cause annoying bugs)."
+        },
+        {
+          "prompt" : "What is an optional in Swift? How Can You Create One?",
+          "answer": "An optional is a type that can store either a value or a nil. You can create an optional by adding a question mark ? after any type:\n\n var number: Int? = 10"
+        },
+        {
+          "prompt" : "What is typealias in Swift? How Do You Create One?",
+          "answer": "Typealias is an alias for an existing data type.\n\nFor example:\ntypealias Weight = Float\nNow you can use Weight instead of Float:\n let mass1: Weight = 150.0\n let mass2: Weight = 220.0\n let total: Weight = mass1 + mass2"
+        },
+        {
+          "prompt" : "Name some advantages of using Swift.",
+          "answer": "To name a few:\n\nSwift is a type-safe language.\nIt has closure support.\nIt has optional type support.\nIt has built-in error handling.\nIt has pattern matching support."
+        },
+        {
+          "prompt" : "What are the 5 control transfer statements in Swift?",
+          "answer": "Five control transfer statements are:\n\n  Break\n Continue\n  Fallthrough\n Throw\n Return.\n\nControl transfer statements change the order in which your code runs.\n\nFor example, you can use a control transfer statement break to end the execution of a for-loop when deemed unnecessary to continue looping:\n  for choice in choices:\n  if isCorrect(choice):\n print(\"Correct choice found!\")\n  break"
+        },
+        {
+          "prompt" : "Suggest a small refactoring to this code.\n\nif age < 18 {\ndriveCar()\n} else {\ndoNotDrive()\n}\n\nThis expression is clean and works well — but can you suggest a minor refactoring improvement to make it even better?",
+          "answer": "You can use the ternary conditional operator to convert this expression into a one-liner, which in this case does not compromise readability but improves it.\n\nage < 18 ? driveCar() : doNotDrive()"
+        },
+        {
+          "prompt" : "How common coding styles and best practices be enforced?",
+          "answer": "Start using a linter, such as Swiftlint. A linter is an easy-to-setup tool that checks and fixes your mistakes and enforces best practices and conventions on your behalf.\n\nYou can use the linter’s default guidelines, but you can also configure the linter to match your company’s preferences."
+        },
+        {
+          "prompt" : "What is a completion handler in Swift?",
+          "answer": "Completion handlers are closures in action.\n\nSuppose you perform a time-consuming task, such as a network request, and you want to do something immediately after the request completes. But you definitely don’t want to waste resources by checking multiple times if the process is ongoing or not.\n\nThis is where completion handlers are used. A completion handler is a closure that “calls you back” as soon as the time-consuming process completes."
+        },
+        
+        {
+          "prompt" : "What does init() do in Swift?",
+          "answer": "The init() method is used to initialize an instance.\n\nInitialization means you prepare an instance (of a class, structure, or enumeration) for use.\n\nIn the initialization process, you set initial values for each property of the instance. You may also perform some other preparations before the instance is ready for use."
+        },
+        {
+          "prompt" : "Explain the difference between let and var in Swift",
+          "answer": "In Swift, you can use let to create a constant (a value that cannot be changed) and var to create a variable (a value that can be modified later)."
+        },
+        {
+          "prompt" : "What is a PLIST?",
+          "answer": "PLIST, or property list, is a dictionary of key-value pairs that are used to store data in your project’s file system, for example, info.plist."
+        },
+        {
+          "prompt" : "What are protocols in Swift? Give an example",
+          "answer": "A protocol is a code contract. It acts as a blueprint for properties, methods, etc. It describes how the type conforming to it must behave.\n\nYou cannot create instances of protocols. Rather, you can make e.g. a class conform to a protocol.\n\nHere is an example protocol that describes an animal:\n\nLet’s create classes Cat and Dog that both conform to the Animal protocol. It is thus required that they both implement the behavior described in the Animalprotocol — that is, variables name, color and the makeSound() method:"
+        },
+        {
+          "prompt" : "What is the double question mark operator?",
+          "answer": "The double question mark operator ?? is known as the nil coalescing operator. It returns the value on the left-hand side if it’s not nil. If the left-hand side is nil then it returns the value on the right-hand side.\n\nNil coalescing can be used as a shorthand for checking if an optional value is nil.\n\nFor example, you can replace this:\nvar name: String?if name != nil {\nprint(name)\n} else {\nprint(\"N/A\")\n}\nWith this:\nprint(name xx \"N/A\")"
+        },
+        {
+          "prompt" : "What is a guard statement?",
+          "answer": "A guard statement is used to transfer program control out of scope. Guard statement is similar to the if statement, but it runs only when some conditions are not met.\n\nFor example, a guard statement used to exit a function:\nfunc myFun() {\nguard false else {\nprint(\"This block is run\")\nreturn\n}\nprint(\"This is never run\")\n}myFun()\nOutput:\nThis block is run"
+        },
+        {
+          "prompt" : "What are the three primary collection types available in Swift?",
+          "answer": "Arrays: An array is an ordered collection of values.\n\nSets: A set is an unordered collection of values.\n\nDictionaries: A Dictionary is an unordered collection of key-value pairs."
+        },
+        {
+          "prompt" : "What is defer in Swift?",
+          "answer": "The defer method is used to execute code before exiting the scope. As an example, let’s print something right before the function’s execution completes:\n\nDeferring is commonly used when opening and closing context within a scope — e.g. when accessing files."
+        },
+        {
+          "prompt" : "Can you swap two variables without a third helper variable?",
+          "answer": "Yes, using tuple destructuring, you can solve the problem like this:\n\nvar a = 1\nvar b = 2(a, b) = (b, a)"
+        },
+        {
+          "prompt" : "What’s the difference between structures and classes?",
+          "answer": "Structures are value types, whereas classes are reference types.\n\nStructures don’t support inheritance, classes do.\nIn class, we can create an instance with let keywords and attempt to mutate its property, whereas there is no mutability in structures.\n\nStructures do not support typecasting, but classes do."
+        },
+        {
+          "prompt" : "What is optional chaining?",
+          "answer": "Optional chaining means you can safely call a property of something that may be nil.\n\nOptional chaining works by chaining one or more optional values with a question mark operator ?, like this:\n\nsomething?.someValue?.someMethod()\n\nIf nil is encountered at any point in the above chain, the app won’t crash — instead, a nil is returned."
+        },
+        {
+          "prompt" : "What Is optional binding?",
+          "answer": "Optional binding checks if an optional contains a value or not. If the optional does have a value, optional binding makes that value temporarily available:\n\nAs an example, the following code checks if the name is nil or not. If it’s not, a temporary constant realName is created and the value name is assigned to it.\n\nvar name: String? = \"Charles\"\nif let realName = name {\nprint (realName)\n}\nOutput:\nCharles"
+        },
+        {
+          "prompt" : "Explain the MVC Architecture",
+          "answer": "MVC (Model-View-Controller), is a software architecture for developing iOS apps. It’s one of iOS app development’s fundamental concepts.\n\nMultiple iOS frameworks use the MVC.\n\nThe idea of MVC is to pass data from one place to another. It means any object in an falls into one of these three categories:\n\nModel: A model represents the app’s data. It stores info, such as products in a store. A model manages the state of the application.\n\nView: A view is responsible for showing and interacting with the UI. For example, a view renders a table of products for your app’s user.\n\nController: The controller is what glues the model and the view. It’s responsible for controlling the logic that goes between the two."
+        },
+        {
+          "prompt" : "What is an In-Out parameter in Swift?",
+          "answer": "An inout parameter allows you to change the value of a parameter inside the function.\n\nTo make a parameter in-out, use the inout keyword in front of the parameter type.\n\nTo pass a variable as an in-out, use & in front of its name."
+        },
+        {
+          "prompt" : "What Is a tuple? How are they created and read?",
+          "answer": "A tuple is a value that can be used to bundle multiple values together, for example, as a pair.\nThe values of the tuple do not need to be of the same type.\n\nYou can create a tuple by comma separating values inside parentheses.\n\nFor example:\nvar coordinates3D = (1.0, 2.0, 5.0)\n\nTo access a value inside a tuple, use the dot notation and an index:\n\nlet xPos = coordinates3D.0\nTuples can also be created so that each value has a name:\nvar coordinates3D = (x: 1.0, y: 2.0, z: 5.0)\n\nIn this case, you can access a specific value of the tuple by its name:\nlet xPos = coordinates3D.x"
+        },
+        {
+          "prompt" : "What Is Swift Messages?",
+          "answer": "Swift Messages is a library used to display messages as a status bar at the top or at the bottom of the iOS device’s screen."
+        },
+        {
+          "prompt" : "How do you give a default function parameter?",
+          "answer": "It is possible to give a default value for a parameter:\n\nfunc eat(food: String = \"spaghetti\") {\nprint(\"Yum! I ate some good (food).\")\n}"
+        },
+        {
+          "prompt" : "What are generics? Give an example of using generics",
+          "answer": "Generics allows you to write flexible and reusable code that can work with any data type.\n\nImagine you’re writing a 3D vector structure, but you want to be able to create vectors using integers, floats, and doubles. You definitely don’t want to write the same code for each data type separately.\nThis is where you can use generics.\n\nFor example, you can create a generic type for parameters (to represent any type) using a letter e.g. T like this:"
+        },
+        {
+          "prompt" : "What’s the pounds property known as? What are getters and setters?",
+          "answer": "The pounds property is also known as a computed property.\n\nIn Swift, computed properties are not stored in the object. A computed property means that its value gets computed “on-demand” only when trying to access it. You can create computed properties using get and (optional) set methods.\n\nThe get method performs the “on-demand” computation when weight.pounds is called.\n\nThe set method updates kilograms when pounds are updated. (Notice that set method is optional, and you don’t need such a method in order to create a computed property.)"
+        },
+        {
+          "prompt" : "What is the difference between == and === Operators?",
+          "answer": "== is the equality operator.\n\n=== is the identity operator.\n\nThe equality operator == is used to check if two Equatable types are equal:\n\"Hello\" == \"Hello\"\n0 == 5.0 + 5.0\n\nThe identity operator === can be used to check if two classes are identical i.e. if they point to the same memory address."
+        },
+        {
+          "prompt" : "What are extensions?",
+          "answer": "In Swift, you can use extensions to add functionality to an existing type.\n\nIn Swift, you can create an extension by using the extension keyword:\nextension SomeExistingType {\n// add new functionality to SomeExistingType here\n}"
+        },
+        {
+          "prompt" : "What is a nested function?",
+          "answer": "A nested function is a combination of a function inside a function:\n\nfunc outer() {\nfunc inner() {\n// Do something here\n}\n}"
+        },
+        {
+          "prompt" : "How do you create a base class in Swift?",
+          "answer": "You can create a base class by defining a class without a superclass."
+        },
+        {
+          "prompt" : "What is force unwrapping? When should you use it?",
+          "answer": "Force unwrapping tries to convert an optional to a value regardless of it containing a value or not.\n\nForce unwrapping is unsafe because if the optional is nil and you try to unwrap it, it triggers an error that crashes the app. Thus, it should be avoided unless you’re 100% sure the optional is not nil."
+        },
+        {
+          "prompt" : "List some benefits of using higher-order functions.",
+          "answer": "They provide flexibility.\n\nThey are useful in async calls where regular functions can’t be used.\n\nThey sometimes improve the quality of code and make it shorter and concise."
+        },
+        {
+          "prompt" : "What is the difference between Fileprivate and Private?",
+          "answer": "A fileprivate property can be read anywhere in the same Swift file but not outside of it.\n\nA private property can only be read inside the type in which it was declared (as well as in the extensions of that type in the same file)."
+        },
+        {
+          "prompt" : "How would you explain what functions are in Swift?",
+          "answer": "A function makes it possible to define reusable blocks of code. A function can perform a task that’s part of your program.\n\nUsually, functions take some values that they can work with."
+        },
+        {
+          "prompt" : "What’s the difference between nil and none?",
+          "answer": "There is no difference between the two:\nnil == .none // returns true\n\nThe only difference is using nil is more common than using none."
+        },
+        {
+          "prompt" : "What is a dictionary in Swift?",
+          "answer": "A dictionary is a basic collection type in Swift.\n\nIt can be used to store key-value pairs.\nYou can easily access a value by knowing a key:\nlet dict = [\"a\": 1, \"b\": 2]let valueOfA = dict[\"a\"]"
+        },
+        {
+          "prompt" : "What does the mutating keyword do?",
+          "answer": "You can use the mutating keyword to allow changing properties of a structure in a method by marking that particular method mutating.\n\nFor example:\nBy default, this is not possible for value types (structures and enumerations) but it is possible for reference types (classes)."
+        },
+        
+        {
+          "prompt" : "What Is a deinitializer? How are they created?",
+          "answer": "A deinitializer is run before a class instance is deallocated.\n\nYou can create a deinitalizer by using the deinit keyword.\n\nThis method is useful only if you need to do some housekeeping before deallocating a class instance.\n\nMost of the time it’s enough to let Swift handle it automatically on your behalf.\n\nHere is an example of a deinitializer that sets number back to 0 when an instance of Example is deallocated.\nvar number = 15class Example {\ninit() {\nnumber *= 10\n}\n\ndeinit {\nnumber = 0\n}\n}"
+        },
+        
+        {
+          "prompt" : "What’s the difference between functions and methods?",
+          "answer": "There is a small difference between a function and a method. Both are reusable chunks of code, however, methods belong to classes, structures, or enumerations but functions don’t."
+        },
+        
+        {
+          "prompt" : "What is an \"AsyncImage\"?",
+          "answer": "An AsyncImage can load an image from a URL, but can also give us control over what happens while the image is loading or if loading fails"
+        },
+        
+        {
+          "prompt" : "What does the \"async\" keyword do?",
+          "answer": "Functions van be marked with the async keyword to make them asynchronous – to tell Swift it can run them at the same time as other functions. Behind the scenes Swift grants the function the ability to pause itself while some other work completes, which means long-running pieces of work won’t waste so much CPU time.\n\nSo, the async keyword is our way of telling Swift “give this function the ability to sleep while some other work completes.” That doesn’t mean it has to go to sleep, only that it might.\n\nWhen calling an asynchronous function you must mark it with the await keyword, to show that you’re explicitly acknowledging the sleep."
+        },
+        
+        
+        {
+          "prompt" : "How can you disallow a class from being inherited?",
+          "answer": "By making the class a final class by using the final keyword. For example:\n\nfinal class Animal {\nlet name = \"I'm a furry animal\"\n}"
+        },
+        {
+          "prompt" : "What Are lazy variables?",
+          "answer": "A lazy variable‘s initial value is computed when calling it for the first time. Lazy variables can be used to optimize code by not doing unnecessary work before needed.\n\nFor example:\nlazy var tallest: Person? = {\nreturn people.max(by: { $0.height < $1.height })\n}()"
+        },
+        {
+          "prompt" : "What is an autoclosure in Swift? How and when should it be used?",
+          "answer": "An autoclosure wraps a function argument into a closure. When an autoclosure is called, it returns the value of the expression wrapped inside.\n\nSometimes, it’s syntactically convenient to use autoclosures when working with a function that takes a closure argument. This is because autoclosure lets you omit using curly braces {}. This can make the code more readable.\n\nHowever, keep in mind what Apple says about using autoclosures:\n\nIt’s common to call functions that take autoclosures, but it’s not common to implement that kind of function."
+        },
+        {
+          "prompt" : "What is missing in this piece of code?\n\nenum Example {\ncase something(Int, Example)\n}",
+          "answer": "It’s possible to create recursive enumerations like the above in Swift.\n\nBelow is an abstract example — however, using recursive enumerations is disabled by default, you need to enable it using the indirect keyword:\nenum Example {\n  indirect case something(Int, Example)\n}"
+        },
+        
+        {
+          "prompt" : "What is iOS Swift?",
+          "answer" : "Swift is a compiled and new programming language evolved by Apple Inc in June 2014 in order to develop apps for mobile and desktop. This language works for watchOS, macOS, iOS, and tvOS.\n\nApple created Swift language to work with both Cocoa Touch and Cocoa. Swift supports multiple operating systems such as Free BSD, Linux, Darwin, etc. This language was designed to work along with the Objective-C library and Cocoa framework in the Apple products."
+        },
+        {
+          "prompt" : "What are the advantages of using Swift?",
+          "answer" : "Swift programming language has speedily become one of the quick-growing languages in memoir. Swift makes us develop software that is incredibly fast, robust and secure.\n\nThis language is the most useful programming language that is used to develop an application for macOS and iOS(iPad and iPhone).\n\nThere are some important advantages offered by developing apps for macOS and iOS using swift.\n\nOpen-source language: The Swift programming language has been created as an open-source and is being open to everyone, this makes it simple for the program to upgrade all the source codes, email lists and bug tracker at regular intervals.\n\nEasy to learn and maintain: Swift programing language is more simple and accurate when compared to C/C++. Apple evolved its programing language to be easy to use and syntaxes are taken from programming languages such as C#, Python, and Ruby. These simple syntax of this programing language make it more meaningful. In swift, all the content of the implementation (.m) and header (.h) files are combined in a single file that is (.swift).\n\nSupported by multiple devices: Swift programming language is not just limited to support Apple devices, it will also support multiple devices of the technology world like Linux and Windows devices.\n\nSupports dynamic libraries: Dynamic libraries are the executable chunks of the code that can be connected to an app. This feature allows the latest swift programing language. In swift, dynamic libraries are directly uploaded to the memory, thereby resulting in deduction down on the initial size of the app and finally increases app performance.\n\nOptional types: An optional in swift is a type that can be held either as a value or not. To declare an optional, we can use a question “?” mark.\n\nClosures: Closures are self-contained blocks of functionality that can be passed around and used in our code."
+        },
+        {
+          "prompt" : "Explain Swift vs Objective-C.",
+          "answer" : "Enlisted below are the various differences between Swift vs Objective-C.\n\nSwift is an object-oriented and functional programing language, whereas Objective-C is a class-based object-oriented programing language.\n\nSwift supports dynamic libraries, whereas Objective-C does not support dynamic libraries.\n\nSwift supports Tuples, whereas Objective-C does not support Tuples.\n\nSemicolons are not required in Swift, whereas semicolons are required in Objective-C.\n\nSwift is an open-source programing language, whereas Objective-C is limited to Apple, and it’s not an open-source language.\n\nWe have to use the “let” keyword to declare for constant and “var” keyword to declare for a variable, whereas in objective C, we have to declare the variable as “NSString” and constant as “int”.\n\nSwift enables us to define methods in structure, classes or enumeration, whereas Objective C does not allow this.\n\nIn swift, we can define classes in a single file (.swift), whereas in Objective C we create separate interface (.h) files for classes and implementation (.m) files for classes."
+        },
+        
+        {
+          "prompt" : "What are the tools that are required to develop iOS applications?",
+          "answer" : "These are some of the essential tools that we should have:\n\nMac/MacMini: It is necessary for us to get a Mac with the Intel-based processor running on Mac OS. Not to worry, if we have our own PC, we can still develop iOS apps through Mac Mini.\n\nXcode: Xcode is the Apple IDE (Integrated Development Environment) that is used for both iOS apps and MAC OS. It provides us a visual layout editor and a code editor that can deal with the logic, user interface and response behind the scene.\n\nSwift Programming Language: In the code editor, the logic will be written in a programming language that is invented by Apple, called Swift.\n\nApple Developer Program: This program allows the developer to push our app live on the App store so that the customers and downloaders all over the world can download our app and use it."
+        },
+        {
+          "prompt" : "What are the most important features of swift?",
+          "answer" : "Some important features of swift are given below:\n\nMore impressive structs and enums.\n\nProtocol oriented.\n\nOptional Types.\n\nType Safety and Type inference language.\n\nNot required to use semicolons.\n\nEnforced initializers.\n\nSafe by default.\n\nLess code, fewer files.\n\nForced Unwrapping.\n\nTuples.\n\nClosures.\n\nMuch faster when compared to other languages."
+        },
+        {
+          "prompt" : "Explain the common execution states for a swift iOS App (iOS Application Lifecycle).",
+          "answer" : "The 5 common execution states are as follows:\n\nNot Running: This is a simple state in which our app is not launched or no code is being executed and terminated by the system and the application is completely switched off.\n\nInactive: This state is just a transitional state. Inactive state means our application is running in the background but is not able to receive events.\n\nActive: Active state is the main execution state, where our app is running in the background and is able to receive events.\n\nBackground: This is the state where our App is running in the background and still is able to execute the code in the background.\n\nSuspended: This state means that our app running is in the background state and the system suspends this app and the application cannot execute any code."
+        },
+        {
+          "prompt" : "Is Swift an object-oriented programming language?",
+          "answer" : "Yes, swift is an object-oriented programming language."
+        },
+        {
+          "prompt" : "What type of objects are basic data types in swift?",
+          "answer" : "Swift uses a standard set of basic data types for different purposes such as Boolean values, numbers, and strings.\n\nInt: int is used to store the integer value.\n\nDouble and Float: Double and Float in swift are considered when while working with the decimal numbers.\n\nBool: The bool type is used to store the Boolean value. In swift, it uses true and false conditions.\n\nString: In String literals, the user defines the text that is enclosed by double quotes in Swift.\n\nArrays: Arrays are the collection of list items.\n\nDictionaries: A dictionary is an unordered collection of items of a particular type that is connected with a unique key."
+        },
+        {
+          "prompt" : "What is init() in Swift?",
+          "answer" : "Initialization is a process of preparing an instance of an enumeration, structure or class for use.\n\nInitializers are also called to create a new instance of a particular type. An initializer is an instance method with no parameters. Using the initializer, we can write the init keyword.\n\ninit()\n\n{\n\n// perform some New Instance initialization here\n\n}"
+        },
+        {
+          "prompt" : "What are the control transfer statements that are used in iOS swift?",
+          "answer" : "The control transfer statements that are used in iOS swift include:\n\nReturn\n\nBreak\n\nContinue\n\nFallthrough"
+        },
+        {
+          "prompt" : "What is the difference between Let and Var in swift?",
+          "answer" : "In swift language, we can declare a constant and variable using Let and Var keyword.\n\n(i) Let: Let keyword is immutable, it’s used to declare a constant variable, and the constant variable cannot be changed once they are initialized.\n\nFor Example: let myAge = 25\n\nWe cannot change the value of age, you can declare the constant value of it only once using the let keyword.\n\n(ii) Var: Var keyword is mutable, and is used to declare a variant variable. These variant variables can change the run time.\n\nFor Example:\n\nvar myName = “Dell”\n\nwe can change the value of name = “Apple”."
+        },
+        {
+          "prompt" : "How to add an element into an array?",
+          "answer" : "Arrays are one of the most used data types in an application (app). We use arrays to organize our application (app) data.\n\nSwift makes it easy to create an array in our code using an array literal. Array elements are simply surrounded by a comma and the list of values is separated with square brackets.\n\nFor Example,\n\n// Add ‘Int’ elements in an Array\n\nlet natural number = [1, 2, 3, 4, 5, 6, 7]\n\n// Add ‘String’ elements in an array\n\nlet countryName = [“India”, “Japan”, “Malaysia”, “Peru”, “Russia”]"
+        },
+        {
+          "prompt" : "Which JSON framework is supported by iOS?",
+          "answer" : "SBJson framework is supported by iOS. SBJson framework provides additional control and a flexible API which makes JSON handling easier. It is a well and highly flexible framework that supports the flexible functioning of APIs."
+        },
+        {
+          "prompt" : "What is PLIST in iOS?",
+          "answer" : "PLIST stands for Property List. PLIST is basically a dictionary of value and keys that can be stored in our file system with a .plist file extension. The property list is used as a portable and lightweight means to store a lesser amount of data. They are normally written in XML.\n\nDifferent types of property lists are mentioned below:\n\nBinary Property List\n\nXML Property List\n\nASCII Legacy Property List"
+        },
+        {
+          "prompt" : "What is a dictionary?",
+          "answer" : "Dictionaries are an association of an unordered collection of key-value pairs. Each value is associated with a unique key, which is a hashable type such as a number or string. We can use the dictionary concept in swift programming language whenever we want to obtain the values based on a key value.\n\nSyntax of Swift Dictionaries:\n\nFollowing is the syntax of defining a dictionary in the Swift programming language.\n\nDictionary<Key, Value> ()\n\nOr\n\n[Key: Value] ()\n\nCreating Dictionaries in Swift:\n\nFollowing are the different ways of creating a dictionary with key-value pairs in the declaration.\n\n// using Dictionary\n\nVar names = Dictonary<String,Int> ()\n\nNames = [“Ajay”: 1, “Mohit”: 2]\n\nprint(names)\n\n// it prints [Ajay: 1, Mohit: 2]"
+        },
+        {
+          "prompt" : "What is a Protocol in swift?",
+          "answer" : "The protocol is a very common feature of the Swift programming language and the protocol is a concept that is similar to an interface from java. A protocol defines a blueprint of properties, methods, and other requirements that are suitable for a particular task.\n\nIn its simplest form, the protocol is an interface that describes some methods and properties. The protocol is just described as the properties or methods skeleton instead of implementation. Properties and methods implementation can be done by defining enumerations, functions, and classes.\n\nProtocols are declared after the structure, enumeration or class type names. A single and multiple protocol declaration can be possible. Multiple protocols are separated by commas.\n\nWe can define a protocol in a way that is very similar to structures, enumerations, and classes:\n\nProtocol Someprotocol\n\n{\n\n// protocol definition goes here\n\n}\n\nWe can define multiple protocols, which are separated by commas:\n\nClass SomeClass: SomeSuperclass, Firstprotocol, Secondprotocol\n\n{\n\n// Structure definition goes here\n\n}"
+        },
+        {
+          "prompt" : "What is a delegate in swift?",
+          "answer" : "Delegate is a design pattern, which is used to pass the data or communication between structs or classes. Delegate allows sending a message from one object to another object when a specific event happens and is used for handling table view and collection view events.\n\nDelegates have one to one relationship and one to one communication."
+        },
+        {
+          "prompt" : "What is the use of double question mark “??” in swift?",
+          "answer" : "The double question mark “??” is a nil-coalescing operator, it is mainly a shorthand for the ternary conditional operator where we used to test for nil. A double question mark is also used to provide a default value for a variable.\n\nstringVar q1 q2 “default string”\n\nThis exactly does the common thing, if stringVar is not nil then it is returned, otherwise the “default string” is returned."
+        },
+        {
+          "prompt" : "What is a GUARD statement? What is the benefit of using the GUARD statement in swift?",
+          "answer" : "A GUARD statement is used to transfer the program control out of the scope when one or more conditions are not met. Using this statement helps in avoiding the pyramid of doom.\n\nA GUARD statement will be in the following form:\n\nguard condition else\n\n{\n\nStatements\n\n}"
+        },
+        {
+          "prompt" : "What are the collection types that are available in swift?",
+          "answer" : "There are three primary collection types that are available in swift for storing a collection of values. They are dictionaries, sets, and arrays\n\nArrays: Arrays is an ordered collection of values, which is stored in the same type of values in an ordered list.\n\nSets: Sets are an unordered collection of unique values, which are stored in a distinct value of the same type in a collection without any defined ordering.\n\nDictionaries: Dictionaries are an unordered collection of Key and value pair associations in an unordered manner."
+        },
+        {
+          "prompt" : "What is “defer”?",
+          "answer" : "The “defer” is a keyword that provides a block of code that can be executed while the execution is leaving the current scope."
+        },
+        {
+          "prompt" : "What is Tuple? How to create a Tuple in swift?",
+          "answer" : "A tuple is a group of different values in a single compound value. It is an ordered list of elements. There are two ways of accessing the object data in a tuple i.e. by name or by position.\n\nIn swift, a tuple can consist of multiple different types. It can support two values i.e. one of integer type, and the other of a string type. It is a legal command.\n\nFor Example: let ImplementationError = (501, “Not implemented”).\n\nWe can create a basic tuple like this:\n\nlet person = (name: “Ajay” , age: 34)"
+        },
+        {
+          "prompt" : "What is the difference between Array and NSArray?",
+          "answer" : "The difference between Array and NSArray are given below:\n\nAn array can hold only one type of data, whereas NSArray can hold different types of data.\n\nAn array is a value type, whereas NSArray is an immutable reference type."
+        },
+        {
+          "prompt" : "What is the difference between class and structure?",
+          "answer" : "The difference between class and structure are given below:\n\nClasses are reference types, whereas structs are value types.\n\nClasses can be built on other classes, whereas struct cannot inherit from another struct.\n\nClasses have an inheritance, whereas structs cannot have an inheritance.\n\nIn class, we can create an instance with “let” keywords and attempt to mutate its property, whereas there is no Mutability in Structs.\n\nClasses have Type Casting, whereas struct doesn’t have Type Casting."
+        },
+        {
+          "prompt" : "What are the best ways of achieving concurrency in iOS?",
+          "answer" : "The three best way to achieve concurrency in iOS are given below:\n\nDispatch queues\n\nThreads\n\nOperation queues"
+        },
+        {
+          "prompt" : "How to create a constant in Swift programming?",
+          "answer" : "We have to use the “let” keyword to declare a constant in the Swift Programming."
+        },
+        {
+          "prompt" : "How to pass the data between view controllers?",
+          "answer" : "There are three ways to pass the data between view controllers as shown below.\n\nUsing Segue, in prepareForSegue method (Forward).\n\nSetting the variable directly (Backward).\n\nUsing Delegate (Backward)."
+        },
+        {
+          "prompt" : "How can we define a base class in swift?",
+          "answer" : "In a swift programming language, classes are not inherited from the base class. The classes are defined by the developer without specifying the superclass and it will become the base class automatically."
+        },
+        {
+          "prompt" : "How can we make a property Optional in swift?",
+          "answer" : "Declaring a Question mark “?” in the swift code can make a property optional. This question mark “?” helps to avoid the runtime error when a property doesn’t hold a value."
+        },
+        {
+          "prompt" : "Who calls the main function of our app during the app launch cycle?",
+          "answer" : "The main thread calls the main function of our app. During the app launching cycle, the system will create a main thread for the app and call the app main function on that main thread."
+        },
+        {
+          "prompt" : "What are UI elements?",
+          "answer" : "Images, Buttons, labels, text fields, and any other elements that are visible to the user within the application are called UI elements."
+        },
+        {
+          "prompt" : "Which is the superclass of all the view controller objects?",
+          "answer" : "UIViewController class is the superclass of all the view controller objects. The functionality for presenting them, loading views, rotating them is a response to the device rotations. All the standard system behavior is provided by the UIViewController class."
+        },
+       
+        {
+          "prompt" : "How to write a multiple line comment in swift?",
+          "answer" : "A multiple line comment is written in between the (/*) at the starting point and (*/) at the endpoint."
+        },
+        {
+          "prompt" : "What are the source items used by Xcode?",
+          "answer" : "Xcode uses four different types of source items as mentioned below:\n\nFramework\n\nSource Group\n\nSource File\n\nSource Folder"
+        },
+        {
+          "prompt" : "What are the different ways to pass data in swift?",
+          "answer" : "There are several ways to pass data in swift such as KVO, Delegate, NSNotification & Callbacks, Target-Action, etc."
+        },
+        {
+          "prompt" : "Explain the usage of Class and benefits of Inheritance.",
+          "answer" : "They are:\n\nReuse implementation\n\nSubclass provides dynamic dispatch.\n\nSubclass provides the reuse interface.\n\nModularity\n\nOverriding provides the mechanism for customization."
+        },
+        {
+          "prompt" : "Explain some common features of Protocols & Superclasses.",
+          "answer" : "Some common features of Protocol & Superclass are given below:\n\nInterface reuse.\n\nImplementation reuse.\n\nSupporting modular design.\n\nProvides points for customization."
+        },
+        {
+          "prompt" : "Explain some biggest changes in UserNotifications.",
+          "answer" : "Some bigger changes in UserNotifications are given below:\n\nAllows adding images, audio, and videos.\n\nAllows creating custom interfaces for notifications.\n\nAllows managing the notifications with interface in the notification center."
+        },
+        {
+          "prompt" : "What is optional chaining?",
+          "answer" : "Optional chaining is a useful process which we can use in combination with the optional to call the methods, properties, and subscripts on the optionals and these values may or may not be nil. In this process, we may try to retrieve a value from a chain of the optional values.\n\nIf the optional contains a value, then calling the subscript, method or property of an optional will return a value.\n\nIf optional is nil, then calling the subscript, method and property will return nil."
+        },
+        
+        {
+          "prompt" : "What is the use of the enumerated() method?",
+          "answer" : "The enumberated() method loops over an array by providing both the item and the array index as it goes."
+        },
+        
+        {
+          "prompt" : "What is meant by \"Clock\", \"Instant\", and \"Duration\"?",
+          "answer" : "Swift 5.7 introduces a new, standardized way of referring to times and durations in Swift. As the name suggests, it’s broken down into three main components:\n\nClocks represent a way of measuring time passing. There are two built in: the continuous clock keeps incrementing time even when the system is asleep, and the suspending clock does not.\n\nInstants represent an exact moment in time.\n\nDurations represent how much time elapsed between two instants."
+        },
+        
+        {
+          "prompt" : "What is optional binding?",
+          "answer" : "Optional Binding concept is used to find out whether an optional contains a value, and it makes that value available as a variable or temporary constant. We use an optional binding concept to check if the optional contains a value or not.\n\nOptional binding can be used with the condition (if and while) statements to check for a value inside an optional."
+        },
+        
+        {
+          "prompt" : "What are higher-order functions in swift?",
+          "answer" : "Higher-order functions are functions that operate on other functions, either by taking them as arguments or by returning them. In simple words, A Higher-Order Function is a function that receives a function as an argument or returns the function as output.\n\nExamples include:\n map\n compactMap\n flatMap\n filter\n reduce\n foreach\n contains.\n\nAn example of the ,ap() function:\n\n  let arr1 = [1,2,3,4,5]\n  let arr2 = arr1.map { {element) in return element * 2 }"
+        },
+        
+        {
+          "prompt" : "What data do we need to provide the Timer?",
+          "answer" : "The Timer needs three pieces of data to work:\n\n 1. How much time should elapse before it is triggered.\n\n  2. Whether it should be triggered only once, or should repeat continuously whenever its time interval has elapsed.\n\n  3. Some code to run when it is triggered."
+        },
+        
+        
+        {
+          "prompt" : "What are the higher-order functions in swift?",
+          "answer" : "The higher-order functions are given below:\n\nMap: Transform the array contents.\n\nReduce: Reduce the values in the collection to a single value.\n\nSort: Sorting the arrays.\n\nFilter: Transform the array contents."
+        },
+        {
+          "prompt" : "Explain some design patterns for app development.",
+          "answer" : "The design patterns that are used during app development are given below:\n\nBehavioral: Memento, and Observer.\n\nCreational: Builder, Factory, and Singleton.\n\nStructural: Façade, Adapter, and Decorator."
+        },
+        {
+          "prompt" : "What are the various ways to unwrap an optional in swift?",
+          "answer" : "There are seven ways to unwrap an optional in swift. They are:\n\nGuard statement: safe.\n\nForced unwrapping: using “!” operator, unsafe.\n\nOptional binding: safe.\n\nOptional pattern: safe.\n\nNil coalescing operator: safe.\n\nImplicitly unwrapped variable declaration: unsafe in many cases.\n\nOptional chaining: safe."
+        },
+        {
+          "prompt" : "What mechanism does iOS support for multi-threading?",
+          "answer" : "They are:\n\nNSThread: It can create a low-level thread which can be started by using the “start” method.\n\nNSOperationQueue: It allows a pool of threads to be created and is used to execute “NSOperations” in parallel."
+        },
+        
+        {
+          "prompt" : "What is the use of the layout guide \"baseline\"?",
+          "answer" : "Baseline is the name for where letters such as \"abcde\" sit on a line, which excludes letters that go below the line such as \"gjpy\". As a result, the bottom of the small text sits lower than the bottom of the bigger text."
+        },
+        
+        {
+          "prompt" : "What three steps does SwiftUI take to create the layout?",
+          "answer" : "1. A parent view proposes a size for its child.\n\n2. Based on that information, the child then chooses its own size and the parent must respect that choice.\n\n3. The parent then positions the child in its coordinate space."
+        },
+        
+        {
+          "prompt" : "What is Swift module?",
+          "answer" : "A:\n\nA module is a single unit of code distribution.\n\nA framework or application is built and shipped as a single unit and that can be imported by another module using the swift import keyword.\n\nEach build target in the Xcode tool is treated as a separate module in swift."
+        },
+        {
+          "prompt" : "Explain Core Data.",
+          "answer" : "Core data is one of the most powerful frameworks provided by Apple for macOS and iOS apps. Core data is used for handling the model layer object in our applications. We can treat Core Data as a framework to filter, modify, save, track the data within the iOS apps. Core Data is not a relational database.\n\nUsing core data, we can easily map the objects in our app to the table records in the database without knowing any SQL. Core data is the M in MVC structure.\n\nSome features of Core data are given below for your reference:\n\nEffective integration with the iOS and macOS toolchains.\n\nOrganizing, filtering, and grouping data in memory and in the UI (User Interface).\n\nAutomatic support for storing objects.\n\nAutomatic validation of property values.\n\nFirst framework for managing an object graph.\n\nCore Data framework for managing the life cycle of the object in the object graph."
+        },
+        {
+          "prompt" : "Explain the Grand Central Dispatch (GCD).",
+          "answer" : "GCD (Grand Central Dispatch) is a low-level API for managing the concurrent operations. This concept is used to help in improving application performance. This process is used to manage multiple tasks at the same time. Grand Central Dispatch (GCD) is the most useful API for multitasking with Async and Sync programming in iOS.\n\nDispatch Queue: The Dispatch Queue manages the task in FIFO(First In First Out) order. Dispatch queues are thread-safe as we can access them from multiple threads simultaneously.\n\nConcurrent: This process has started multiple tasks at the same time but is not sure of the termination at the same time. It can be finished in any order. They execute one or more tasks at the same time concurrently. The task is completed according to the complexity, and not by the order in the queue.\n\nSerial: Only one task will execute at a time. It can be used to synchronize access to a specific resource.\n\nSync: A synchronous function has return control to the caller after the task is complete.\n\nAsync: An asynchronous function returns immediately, by ordering the task to start but will not wait for it to complete."
+        },
+        {
+          "prompt" : "Explain MVC structure.",
+          "answer" : "MVC stands for the model view controller. MVC is a powerful software architecture pattern for using developing apps.\n\nMVC builds on top of the Object-Oriented Programming concepts. It structures the flow of data and interaction in our app. Model-View-Controller is an important fundamental concept to be understood in iOS development. Many iOS frameworks, like UIKit, Cocoa Touch, use the MVC pattern for messaging and structured data flow.\n\nModel-View-Controller is used to pass the data from one part of our app to another.\n\nIts a design pattern used to assign objects in an application in any one of the three roles:\n\nModel: Model is a wrapper of data. Model is a representation of our app data and it holds the information to a specific user like birthdate, username, etc. The model manages the application state. This also includes writing and reading data. The Model encapsulates an individual set of data and applies some logic to manipulate that data.\n\nView: View is a representation of a UI (User Interface). A View is an object that the visible to the user and it interacts with a user interface (UI).\n\nController: Controller is an intermediary between the View and the Model. The controller controls all the logic that goes between the Model and the View. Its inter-communicates messages between the Model and the View, and vice versa."
+        }
+    ]
+  },
+  {
+    "title" : "Property Wrappers",
+    "description" : "",
+    "questions" : [ 
+    {
+      "prompt" : "What is @AppStorage?",
+      "answer" : "@AppStorage reads and writes values from UserDefaults. This owns its data. "
+    },
+    {
+      "prompt" : "What is @Binding?",
+      "answer" : "@Binding refers to value type data owned by a different view. Changing the binding locally changes the remote data too. This does not own its data. "
+    },
+    {
+      "prompt" : "What is @Environment?",
+      "answer" : "@Environment lets us read data from the system, such as color scheme, accessibility options, and trait collections, but you can add your own keys here if you want. This does not own its data. "
+    },
+    {
+      "prompt" : "What is @EnvironmentObject?",
+      "answer" : "@EnvironmentObject reads a shared object that we placed into the environment. This does not own its data. "
+    },
+    {
+      "prompt" : "What is @FetchRequest?",
+      "answer" : "@FetchRequest starts a Core Data fetch request for a particular entity. It is responsible for fetching objects from Core Data, but will also update our UI whenever reviews are created or deleted. This owns its data. "
+    },
+    {
+      "prompt" : "What is @FocusedBinding?",
+      "answer" : "@FocusedBinding is designed to watch for values in the key window, such as a text field that is currently selected. This does not own its data."
+    },
+    {
+      "prompt" : "What is @FocusedValue?",
+      "answer" : "@FocusedValue is a simpler version of @FocusedBinding that doesn’t unwrap the bound value for you. This does not own its data."
+    },
+    {
+      "prompt" : "What is @GestureState?",
+      "answer" : "@GestureState stores values associated with a gesture that is currently in progress, such as how far you have swiped, except it will be reset to its default value when the gesture stops. This owns its data. "
+    },
+    {
+      "prompt" : "What is @Namespace?",
+      "answer" : "@Namespace creates an animation namespace to allow matched geometry effects, which can be shared by other views. This owns its data."
+    },
+    {
+      "prompt" : "What is @NSApplicationDelegateAdaptor?",
+      "answer" : "@NSApplicationDelegateAdaptor is used to create and register a class as the app delegate for a macOS app. This owns its data."
+    },
+    {
+      "prompt" : "What is @ObservedObject?",
+      "answer" : "@ObservedObject refers to an instance of an external class that conforms to the ObservableObject protocol. This does not own its data. "
+    },
+    {
+      "prompt" : "What is @Published?",
+      "answer" : "@Published is attached to properties inside an ObservableObject, and tells SwiftUI that it should refresh any views that use this property when it is changed. This owns its data. "
+    },
+    {
+      "prompt" : "What is @ScaledMetric?",
+      "answer" : "@ScaledMetric reads the user’s Dynamic Type setting and scales numbers up or down based on an original value you provide. This owns its data. "
+    },
+    {
+      "prompt" : "What is @SceneStorage?",
+      "answer" : "@SceneStorage lets us save and restore small amounts of data for state restoration. This owns its data. "
+    },
+    {
+      "prompt" : "What is @State?",
+      "answer" : "@State lets us manipulate small amounts of value type data locally to a view. This owns its data. "
+    },
+    {
+      "prompt" : "What is @StateObject?",
+      "answer" : "@StateObject is used to store new instances of reference type data that conforms to the ObservableObject protocol. This owns its data. "
+    },
+    {
+      "prompt" : "What is @UIApplicationDelegateAdaptor?",
+      "answer" : "@UIApplicationDelegateAdaptor is used to create and register a class as the app delegate for an iOS app. This owns its data. "
+    }
+  ]
+  }
+]

@@ -13,9 +13,18 @@
 		3377DDBE29E801EE009D4FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3377DDBC29E801EE009D4FE4 /* Main.storyboard */; };
 		3377DDC029E801F0009D4FE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3377DDBF29E801F0009D4FE4 /* Assets.xcassets */; };
 		3377DDC329E801F0009D4FE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3377DDC129E801F0009D4FE4 /* LaunchScreen.storyboard */; };
-		3377DDCE29E801F0009D4FE4 /* SwiftTutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3377DDCD29E801F0009D4FE4 /* SwiftTutorTests.swift */; };
 		3377DDD829E801F0009D4FE4 /* SwiftTutorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3377DDD729E801F0009D4FE4 /* SwiftTutorUITests.swift */; };
 		3377DDDA29E801F0009D4FE4 /* SwiftTutorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3377DDD929E801F0009D4FE4 /* SwiftTutorUITestsLaunchTests.swift */; };
+		3377DDEE29E803EF009D4FE4 /* QuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3377DDED29E803EF009D4FE4 /* QuestionTests.swift */; };
+		3377DDF029E805AC009D4FE4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3377DDEF29E805AC009D4FE4 /* Question.swift */; };
+		3377DDF529E80A1F009D4FE4 /* QuestionTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3377DDF429E80A1F009D4FE4 /* QuestionTestData.swift */; };
+		3377DDF729E81982009D4FE4 /* QuestionSectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3377DDF629E81982009D4FE4 /* QuestionSectionTests.swift */; };
+		3377DDF929E819D0009D4FE4 /* QuestionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3377DDF829E819D0009D4FE4 /* QuestionSection.swift */; };
+		3377DDFB29E81A35009D4FE4 /* QuestionSectionTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3377DDFA29E81A35009D4FE4 /* QuestionSectionTestData.swift */; };
+		3377DE0229E822EE009D4FE4 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3377DE0129E822EE009D4FE4 /* Bundle-Decodable.swift */; };
+		3377DE0429E82543009D4FE4 /* Bundle-DecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3377DE0329E82543009D4FE4 /* Bundle-DecodableTests.swift */; };
+		3377DE0929E8511E009D4FE4 /* Questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 3377DE0829E8511E009D4FE4 /* Questions.json */; };
+		3377DE0B29E85199009D4FE4 /* EmptyQuestionFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 3377DE0A29E85199009D4FE4 /* EmptyQuestionFile.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,10 +54,19 @@
 		3377DDC229E801F0009D4FE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3377DDC429E801F0009D4FE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3377DDC929E801F0009D4FE4 /* SwiftTutorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftTutorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3377DDCD29E801F0009D4FE4 /* SwiftTutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTutorTests.swift; sourceTree = "<group>"; };
 		3377DDD329E801F0009D4FE4 /* SwiftTutorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftTutorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3377DDD729E801F0009D4FE4 /* SwiftTutorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTutorUITests.swift; sourceTree = "<group>"; };
 		3377DDD929E801F0009D4FE4 /* SwiftTutorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTutorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3377DDED29E803EF009D4FE4 /* QuestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTests.swift; sourceTree = "<group>"; };
+		3377DDEF29E805AC009D4FE4 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		3377DDF429E80A1F009D4FE4 /* QuestionTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTestData.swift; sourceTree = "<group>"; };
+		3377DDF629E81982009D4FE4 /* QuestionSectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSectionTests.swift; sourceTree = "<group>"; };
+		3377DDF829E819D0009D4FE4 /* QuestionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSection.swift; sourceTree = "<group>"; };
+		3377DDFA29E81A35009D4FE4 /* QuestionSectionTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSectionTestData.swift; sourceTree = "<group>"; };
+		3377DE0129E822EE009D4FE4 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
+		3377DE0329E82543009D4FE4 /* Bundle-DecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-DecodableTests.swift"; sourceTree = "<group>"; };
+		3377DE0829E8511E009D4FE4 /* Questions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Questions.json; sourceTree = "<group>"; };
+		3377DE0A29E85199009D4FE4 /* EmptyQuestionFile.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EmptyQuestionFile.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +131,9 @@
 		3377DDCC29E801F0009D4FE4 /* SwiftTutorTests */ = {
 			isa = PBXGroup;
 			children = (
-				3377DDCD29E801F0009D4FE4 /* SwiftTutorTests.swift */,
+				3377DDFC29E81DA8009D4FE4 /* HelperTests */,
+				3377DDF129E806E9009D4FE4 /* TestData */,
+				3377DDEC29E80369009D4FE4 /* Model */,
 			);
 			path = SwiftTutorTests;
 			sourceTree = "<group>";
@@ -130,6 +150,8 @@
 		3377DDE629E801FB009D4FE4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3377DDEF29E805AC009D4FE4 /* Question.swift */,
+				3377DDF829E819D0009D4FE4 /* QuestionSection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,6 +174,7 @@
 		3377DDE929E80223009D4FE4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3377DE0129E822EE009D4FE4 /* Bundle-Decodable.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -159,7 +182,9 @@
 		3377DDEA29E80238009D4FE4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3377DE0829E8511E009D4FE4 /* Questions.json */,
 				3377DDBF29E801F0009D4FE4 /* Assets.xcassets */,
+				3377DE0A29E85199009D4FE4 /* EmptyQuestionFile.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -173,6 +198,32 @@
 				3377DDC129E801F0009D4FE4 /* LaunchScreen.storyboard */,
 			);
 			path = System;
+			sourceTree = "<group>";
+		};
+		3377DDEC29E80369009D4FE4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3377DDED29E803EF009D4FE4 /* QuestionTests.swift */,
+				3377DDF629E81982009D4FE4 /* QuestionSectionTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3377DDF129E806E9009D4FE4 /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				3377DDF429E80A1F009D4FE4 /* QuestionTestData.swift */,
+				3377DDFA29E81A35009D4FE4 /* QuestionSectionTestData.swift */,
+			);
+			path = TestData;
+			sourceTree = "<group>";
+		};
+		3377DDFC29E81DA8009D4FE4 /* HelperTests */ = {
+			isa = PBXGroup;
+			children = (
+				3377DE0329E82543009D4FE4 /* Bundle-DecodableTests.swift */,
+			);
+			path = HelperTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +297,7 @@
 					};
 					3377DDC829E801F0009D4FE4 = {
 						CreatedOnToolsVersion = 14.3;
+						LastSwiftMigration = 1430;
 						TestTargetID = 3377DDB229E801EE009D4FE4;
 					};
 					3377DDD229E801F0009D4FE4 = {
@@ -280,6 +332,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3377DDC329E801F0009D4FE4 /* LaunchScreen.storyboard in Resources */,
+				3377DE0B29E85199009D4FE4 /* EmptyQuestionFile.json in Resources */,
+				3377DE0929E8511E009D4FE4 /* Questions.json in Resources */,
 				3377DDC029E801F0009D4FE4 /* Assets.xcassets in Resources */,
 				3377DDBE29E801EE009D4FE4 /* Main.storyboard in Resources */,
 			);
@@ -306,9 +360,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3377DDF929E819D0009D4FE4 /* QuestionSection.swift in Sources */,
 				3377DDBB29E801EE009D4FE4 /* ViewController.swift in Sources */,
+				3377DDF029E805AC009D4FE4 /* Question.swift in Sources */,
 				3377DDB729E801EE009D4FE4 /* AppDelegate.swift in Sources */,
 				3377DDB929E801EE009D4FE4 /* SceneDelegate.swift in Sources */,
+				3377DE0229E822EE009D4FE4 /* Bundle-Decodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +373,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3377DDCE29E801F0009D4FE4 /* SwiftTutorTests.swift in Sources */,
+				3377DDEE29E803EF009D4FE4 /* QuestionTests.swift in Sources */,
+				3377DDF729E81982009D4FE4 /* QuestionSectionTests.swift in Sources */,
+				3377DDF529E80A1F009D4FE4 /* QuestionTestData.swift in Sources */,
+				3377DE0429E82543009D4FE4 /* Bundle-DecodableTests.swift in Sources */,
+				3377DDFB29E81A35009D4FE4 /* QuestionSectionTestData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +600,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JV455MTU52;
@@ -548,6 +610,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.CalandraLark.SwiftTutorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftTutor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftTutor";
@@ -559,6 +622,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JV455MTU52;
