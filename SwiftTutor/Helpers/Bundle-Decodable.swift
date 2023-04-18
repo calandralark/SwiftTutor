@@ -21,9 +21,9 @@ extension Bundle {
    Decode Object "T" from file
    */
   func decode<T: Codable>(_ file: String, completionHandler: @escaping (Result<T, BundleDecodableError>) -> Void)  {
-      
+    
     let decoder = JSONDecoder()
-  
+    
     guard let url = self.url(forResource: file, withExtension: nil) else {
       return completionHandler(.failure(.failedToFindFile))
     }
@@ -41,19 +41,35 @@ extension Bundle {
     }
   }
   
-    /**
-     Decode Object "T" from data
-     */
+  /**
+   Decode Object "T" from data
+   */
   func decode<T: Codable>(from data: Data, completionHandler: @escaping (Result<T, BundleDecodableError>) -> Void)  {
-      
+    
     let decoder = JSONDecoder()
-  
+    
     do {
       let decoded : T = try decoder.decode(T.self, from: data)
       
       completionHandler(.success(decoded))
-    } catch (_) {
+    } catch (let error ){
       completionHandler(.failure(.failedToDecodeData))
+    }
+  }
+  
+  /**
+   Decode Object "T" from data
+   */
+  func decode<T: Codable>(from data: Data) -> T? {
+    
+    let decoder = JSONDecoder()
+    
+    do {
+      let decoded : T = try decoder.decode(T.self, from: data)
+      
+      return decoded
+    } catch {
+      return nil
     }
   }
 }

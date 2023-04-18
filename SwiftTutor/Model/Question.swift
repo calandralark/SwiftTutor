@@ -8,16 +8,19 @@
 import Foundation
 
 struct Question : Codable {
+  
+  static var id = 0
+  
+  static func getNextId() -> Int {
+    defer {
+      Question.id += 1
+    }
+    return Question.id
+  }
+  
   private (set) var prompt  : String
   private (set) var answer  : String
+  private (set) var id      = getNextId()
   
-  init?(json: [String: Any]) {
-    guard let prompt = json["prompt"] as? String,
-          let answer = json["answer"] as? String
-    else {
-      return nil
-    }
-    self.prompt = prompt
-    self.answer = answer
-  }
+  private enum CodingKeys : String, CodingKey { case prompt, answer }
 }

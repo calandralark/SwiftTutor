@@ -293,7 +293,7 @@
       
       {
         "prompt" : "What is meant by \"parallelism\"?",
-        "answer" : "This is when there are multiple CPU's and the diffentent programs can be run on different CPU's. additionally, a single program can spread its processing on multiple CPU's."
+        "answer" : "This is when there are multiple CPU's and the different programs can be run on different CPU's. additionally, a single program can spread its processing on multiple CPU's."
       },
       
       {
