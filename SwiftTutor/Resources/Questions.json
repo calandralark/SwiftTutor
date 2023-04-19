@@ -1180,7 +1180,7 @@
         
         {
           "prompt" : "What does the \"async\" keyword do?",
-          "answer": "Functions van be marked with the async keyword to make them asynchronous – to tell Swift it can run them at the same time as other functions. Behind the scenes Swift grants the function the ability to pause itself while some other work completes, which means long-running pieces of work won’t waste so much CPU time.\n\nSo, the async keyword is our way of telling Swift “give this function the ability to sleep while some other work completes.” That doesn’t mean it has to go to sleep, only that it might.\n\nWhen calling an asynchronous function you must mark it with the await keyword, to show that you’re explicitly acknowledging the sleep."
+          "answer": "Functions can be marked with the async keyword to make them asynchronous – to tell Swift it can run them at the same time as other functions. Behind the scenes Swift grants the function the ability to pause itself while some other work completes, which means long-running pieces of work won’t waste so much CPU time.\n\nSo, the async keyword is our way of telling Swift “give this function the ability to sleep while some other work completes.” That doesn’t mean it has to go to sleep, only that it might.\n\nWhen calling an asynchronous function you must mark it with the await keyword, to show that you’re explicitly acknowledging the sleep."
         },
         
         
